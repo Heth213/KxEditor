@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Windows.Forms;
 using KxExtension;
 
@@ -33,14 +34,14 @@ namespace KxEditor
         public class Sliding_Panel 
         {
             public Panel panel;
-            public Timer timer;
+            public System.Windows.Forms.Timer timer;
             public bool ishidden;
             public int maxwidth;
             public int widthincrement;
             public Sliding_Panel(Panel _panel, int _maxwidth, int _widthincrement, int _timerinterval)
             {
                 panel = _panel;
-                timer = new Timer
+                timer = new System.Windows.Forms.Timer
                 {
                     Interval = _timerinterval
                 };
@@ -92,6 +93,10 @@ namespace KxEditor
         #region Constructor
         public MainForm()
         {
+            splashThread = new Thread(new ThreadStart(ShowSplash));
+            splashThread.Start();
+            Thread.Sleep(2000);
+
             InitializeComponent();
             Instance = this;
             Application.AddMessageFilter(Instance);
@@ -107,7 +112,7 @@ namespace KxEditor
             Instance.MaximumSize = new Size(ScreenResolution.Width + 100, ScreenResolution.Height + 100);
             Instance.MinimumSize = new Size(600, 400);
             Instance.Center_EditorTextBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-            //Instance.fcTextBox.ImeMode = ImeMode.HangulFull;
+
             treeviewContextMenu = new ContextMenu();
             treeview_RightClickMenueItem_SaveAll = new MenuItem("Save All");
             treeview_RightClickMenueItem_SaveAs = new MenuItem("SaveAs...");
@@ -115,7 +120,6 @@ namespace KxEditor
             treeviewContextMenu.MenuItems.Add(treeview_RightClickMenueItem_SaveAs);
             treeview_RightClickMenueItem_SaveAs.Click += new EventHandler(Treeviw_RightClick_SaveAs);
             treeview_RightClickMenueItem_SaveAll.Click += new EventHandler(Treeviw_RightClick_SaveAll);
-
 
             slidingPanel = new Sliding_Panel(panel_MenuLeft, 130, 15, 10);
 
@@ -128,10 +132,20 @@ namespace KxEditor
                 KxSharpLib.FormHelper.DisableControls(Settings_groupBox);
                 KxSharpLib.FormHelper.HideControls(Settings_groupBox);
             }
-
-
             logger.Write("Initialized and ready!");
+
+            splashThread.Abort();
+            KxSharpLib.Win32.SwitchToThisWindow(this.Handle, true);
         }
+        #endregion
+
+        #region Splash
+        Thread splashThread;
+        public void ShowSplash()
+        {
+            Application.Run(new Forms.Splash());
+        }
+
         #endregion
 
         #region PreFilterMessage
