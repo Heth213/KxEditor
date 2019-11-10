@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{42DE625B-4B98-467A-941E-793B652E6A7C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>KxEditor</RootNamespace>
+    <AssemblyName>KxEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>KxEditor.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\KxIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="FastTree, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastTree.1.3.0.0\lib\FastTree.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.1.271, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonConfig, Version=1.0.5359.16918, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JsonConfig.1.0.0\lib\JsonConfig.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonFx, Version=2.0.1209.2802, Culture=neutral, PublicKeyToken=315052dd637f8a52, processorArchitecture=MSIL">
+      <HintPath>..\packages\JsonFx.2.0.1209.2802\lib\net40\JsonFx.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Win32Interop.Dwmapi, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Win32Interop.Dwmapi.1.0.1\lib\Win32Interop.Dwmapi.dll</HintPath>
+    </Reference>
+    <Reference Include="Win32Interop.Gdi32, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Win32Interop.Gdi32.1.0.1\lib\Win32Interop.Gdi32.dll</HintPath>
+    </Reference>
+    <Reference Include="Win32Interop.Kernel32, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Win32Interop.Kernel32.1.0.1\lib\Win32Interop.Kernel32.dll</HintPath>
+    </Reference>
+    <Reference Include="Win32Interop.User32, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Win32Interop.User32.1.0.1\lib\Win32Interop.User32.dll</HintPath>
+    </Reference>
+    <Reference Include="Win32Interop.Uxtheme, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Win32Interop.Uxtheme.1.0.1\lib\Win32Interop.Uxtheme.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Forms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\KxMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KxMsgBox.Designer.cs">
+      <DependentUpon>KxMsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MDIArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MDIArea.Designer.cs">
+      <DependentUpon>MDIArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PasswordPromt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PasswordPromt.Designer.cs">
+      <DependentUpon>PasswordPromt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KxExtensions.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PackageHandler.cs" />
+    <EmbeddedResource Include="Forms\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KxMsgBox.resx">
+      <DependentUpon>KxMsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MDIArea.resx">
+      <DependentUpon>MDIArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PasswordPromt.resx">
+      <DependentUpon>PasswordPromt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KxSharpLib\KxSharpLib.csproj">
+      <Project>{923f2b3f-0699-4ace-b909-4a272a12e695}</Project>
+      <Name>KxSharpLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm-Error-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm-Info-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm-Warning-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm-Help-and-Support-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_shield_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_sign_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keyhole_shield_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_2_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question_shield_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restriction_shield_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security_aes_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security_checked_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security_ssl_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\services_52px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\share_3_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock_2_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning_shield_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\around_the_globe_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\battle_net_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\financial_changes_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lifebuoy_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lifecycle_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\physics_1_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\physics_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Black_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Black_128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Blue_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Blue_128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Green_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Green_128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Red_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Red_128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_Black_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_Black_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_Green_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_Green_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_Red_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_Red_64px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
