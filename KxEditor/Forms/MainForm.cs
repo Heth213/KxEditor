@@ -25,6 +25,8 @@ namespace KxEditor
         public ContextMenu treeviewContextMenu;
         public MenuItem treeview_RightClickMenueItem_SaveAs;
         public MenuItem treeview_RightClickMenueItem_SaveAll;
+        public MenuItem treeview_RightClickMenueItem_Add;
+        public MenuItem treeview_RightClickMenueItem_Delete;
         public int treeview_RightClickMenu_ClickedNodeIndex = -1;
 
         public static Rectangle ScreenResolution => Screen.PrimaryScreen.Bounds;
@@ -122,10 +124,17 @@ namespace KxEditor
             treeviewContextMenu = new ContextMenu();
             treeview_RightClickMenueItem_SaveAll = new MenuItem("Save All");
             treeview_RightClickMenueItem_SaveAs = new MenuItem("SaveAs...");
+            treeview_RightClickMenueItem_Add = new MenuItem("Add");
+            treeview_RightClickMenueItem_Delete = new MenuItem("Delete");
             treeviewContextMenu.MenuItems.Add(treeview_RightClickMenueItem_SaveAll);
             treeviewContextMenu.MenuItems.Add(treeview_RightClickMenueItem_SaveAs);
+            treeviewContextMenu.MenuItems.Add(treeview_RightClickMenueItem_Add);
+            treeviewContextMenu.MenuItems.Add(treeview_RightClickMenueItem_Delete);
+
             treeview_RightClickMenueItem_SaveAs.Click += new EventHandler(Treeviw_RightClick_SaveAs);
             treeview_RightClickMenueItem_SaveAll.Click += new EventHandler(Treeviw_RightClick_SaveAll);
+            treeview_RightClickMenueItem_Add.Click += new EventHandler(Treeviw_RightClick_Add);
+            treeview_RightClickMenueItem_Delete.Click += new EventHandler(Treeviw_RightClick_Delete);
 
             slidingPanel = new Sliding_Panel(panel_MenuLeft, 130, 15, 10);
 
@@ -224,7 +233,11 @@ namespace KxEditor
             }
 
             KxSharpLib.Kal.DAT item = DATList[treeView_PKiew.SelectedNode.Index];
+
+            Center_EditorTextBox.BeginUpdate();
             Center_EditorTextBox.Text = item.content;
+            Center_EditorTextBox.EndUpdate();
+
             treenViewLastSelectedIndex = treeView_PKiew.SelectedNode.Index;
 
             logger.Write(string.Format("[File:({0})] >> [SelectedItem:({1})]", item.name, item.index));
@@ -271,6 +284,24 @@ namespace KxEditor
                     }
                 }
             }
+            treeview_RightClickMenu_ClickedNodeIndex = -1;
+        }
+
+        public void Treeviw_RightClick_Add(object sender, EventArgs e)
+        {
+            if (treeview_RightClickMenu_ClickedNodeIndex == -1)
+                return;
+
+
+            treeview_RightClickMenu_ClickedNodeIndex = -1;
+        }
+
+        public void Treeviw_RightClick_Delete(object sender, EventArgs e)
+        {
+            if (treeview_RightClickMenu_ClickedNodeIndex == -1)
+                return;
+
+
             treeview_RightClickMenu_ClickedNodeIndex = -1;
         }
         #endregion

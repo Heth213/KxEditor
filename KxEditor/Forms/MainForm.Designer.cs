@@ -163,6 +163,7 @@
             this.Center_EditorTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Center_EditorTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.Center_EditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Center_EditorTextBox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Center_EditorTextBox.ForeColor = System.Drawing.Color.Gray;
             this.Center_EditorTextBox.HighlightFoldingIndicator = false;
             this.Center_EditorTextBox.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
@@ -219,6 +220,7 @@
             this.Center_LoggingTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Center_LoggingTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.Center_LoggingTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Center_LoggingTextBox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Center_LoggingTextBox.ForeColor = System.Drawing.Color.LightGray;
             this.Center_LoggingTextBox.HighlightFoldingIndicator = false;
             this.Center_LoggingTextBox.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
