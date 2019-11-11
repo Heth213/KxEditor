@@ -1,4 +1,6 @@
-﻿namespace KxSharpLib.Kal
+﻿using System.Collections.Generic;
+
+namespace KxSharpLib.Kal
 {
     public class PK
     {

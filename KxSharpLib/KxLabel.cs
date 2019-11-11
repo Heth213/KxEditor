@@ -5,9 +5,8 @@ using System.Windows.Forms;
 
 namespace KxSharpLib
 {
-    public class KxProgressBar : ProgressBar
+    public class KxLabel : Label
     {
-
         #region GradientColorTop
         private Color gradientcolortop = Color.White;
         [DefaultValue(typeof(Color), "White")]
@@ -47,8 +46,7 @@ namespace KxSharpLib
         }
         #endregion
 
-
-        public KxProgressBar()
+        public KxLabel()
         {
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
         }
@@ -56,30 +54,9 @@ namespace KxSharpLib
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics gfx = e.Graphics;
-            Rectangle rec = new Rectangle(0, 0, Width, Height);
-            double scaleFactor = (((double)Value - (double)Minimum) / ((double)Maximum - (double)Minimum));
-            int currentWidth = (int)((rec.Width * scaleFactor));
-
-            using (SolidBrush brush = new SolidBrush(GradientColorTop))
+            using (LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, Width, Height + 5), GradientColorTop, GradientColorBottom, GradientMode))
             {
-                gfx.FillRectangle(brush, rec);
-            }
-
-            using (LinearGradientBrush brush = new LinearGradientBrush(rec, GradientColorTop, GradientColorBottom, GradientMode))
-            {
-                rec.Width = currentWidth;
-                if (rec.Width == 0) rec.Width = 1;
-                gfx.FillRectangle(brush, rec);
-            }
-
-            using (SolidBrush sb = new SolidBrush(Color.GreenYellow))
-            {
-                using (Font font = new Font("Ink Free", 10f, FontStyle.Bold))
-                {
-                    SizeF sz = gfx.MeasureString("Loading . . .", font);
-                    PointF pf = new PointF((Width - sz.Width) / 2F, (Height - sz.Height) / 2F);
-                    gfx.DrawString("Loading . . .", font, sb, pf);
-                }
+                gfx.DrawString(Text, Font, brush, 0, 0);
             }
         }
     }

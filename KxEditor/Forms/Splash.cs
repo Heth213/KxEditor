@@ -1,15 +1,22 @@
 ﻿using System;
-using System.Threading;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace KxEditor.Forms
 {
-    public partial class Splash : Form
+    public partial class Splash : Form, IMessageFilter
     {
-        private System.Windows.Forms.Timer pb_timer;
+        private HashSet<Control> ControlsToMove { get; set; }
+        private readonly System.Windows.Forms.Timer pb_timer;
+
         public Splash()
         {
             InitializeComponent();
+            Application.AddMessageFilter(this);
+            ControlsToMove = new HashSet<Control> {
+                //panel_Top,
+            };
+
             System.Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             label_Version.Text = string.Format("Version: {0}.{1:00}", version.Major, version.Minor);
 
@@ -22,6 +29,13 @@ namespace KxEditor.Forms
 
         }
 
+        #region PreFilterMessage
+        public bool PreFilterMessage(ref Message message)
+        {
+            return KxSharpLib.FormHelper.TryDrag(this, ref message, ControlsToMove);
+        }
+        #endregion
+
         private void Splash_Load(object sender, System.EventArgs e)
         {
 
@@ -32,7 +46,6 @@ namespace KxEditor.Forms
             kxProgressBar.Value += 1;
             if(kxProgressBar.Value == 100) {
                 pb_timer.Stop();
-                //kxProgressBar.Value = 0;
             }
         }
 

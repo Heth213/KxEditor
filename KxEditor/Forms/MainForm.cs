@@ -86,10 +86,16 @@ namespace KxEditor
             }
         }
         public Sliding_Panel slidingPanel;
-
-
         #endregion
-        
+
+        #region Splash
+        readonly Thread splashThread;
+        public void ShowSplash()
+        {
+            Application.Run(new Forms.Splash());
+        }
+        #endregion
+
         #region Constructor
         public MainForm()
         {
@@ -137,15 +143,6 @@ namespace KxEditor
             splashThread.Abort();
             KxSharpLib.Win32.SwitchToThisWindow(this.Handle, true);
         }
-        #endregion
-
-        #region Splash
-        Thread splashThread;
-        public void ShowSplash()
-        {
-            Application.Run(new Forms.Splash());
-        }
-
         #endregion
 
         #region PreFilterMessage
@@ -342,82 +339,6 @@ namespace KxEditor
         {
             KxSharpLib.FormHelper.Maximize(this);
         }
-        private void Button_RightTopExit_Click(object sender, EventArgs e)
-        {
-            DialogResult result = KxMsgBox.Show("Exit?", "Do you want to close?", KxMsgBoxIcon.QUESTION, KxMsgBoxButton.YESNO);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-        private void Button_MenuLeftFileOpen_Click(object sender, EventArgs e)
-        {
-            if (Setting_CryptTable_comboBox.SelectedIndex == -1 || KxSharpLib.Security.Kal.Crypto.GUseCrypt == KxSharpLib.Security.Kal.Crypto.EUseCrypt.Unknown)
-            {
-                logger.Write("[Unknown CryptTable, Please set a valid table!]");
-                return;
-            }
-
-            if (DATList != null)
-            {
-                logger.Write("[There is already a file loaded!]");
-
-                DialogResult diaResult = KxMsgBox.Show("Already open!", "There is already a file loaded!\nClose without saving ?", KxMsgBoxIcon.WARNING, KxMsgBoxButton.YESNO);
-                switch (diaResult)
-                {
-                    case DialogResult.Yes:
-                        {
-                            Center_EditorTextBox.Clear();
-                            LoadedPK = new KxSharpLib.Kal.PK();
-                            DATList.Clear();
-                            DATList = null;
-                            treeView_PKiew.Nodes.Clear();
-                            Setting_CryptTable_comboBox.Enabled = true;
-                            KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, "Current File:   [None]");
-                            break;
-                        }
-
-                    case DialogResult.No:
-                        return;
-                    default:
-                        return;
-                }
-            }
-
-            using (OpenFileDialog filedia = new OpenFileDialog())
-            {
-                filedia.Title = "Open PK File";
-                filedia.Filter = "PK files|*.pk";
-                filedia.CheckFileExists = true;
-                filedia.CheckPathExists = true;
-
-                switch (filedia.ShowDialog(this))
-                {
-                    case DialogResult.OK:
-                        {
-                            _ = new PackageHandler(filedia.FileName);
-                            Setting_CryptTable_comboBox.Enabled = false;
-                            textBox_FileInfo_Name.Text = Path.GetFileName(filedia.FileName);
-                            textBox_FileInfo_Path.Text = filedia.FileName;
-                            using (var md5 = MD5.Create())
-                            {
-                                textBox_FileInfo_MD5.Text = BitConverter.ToString(md5.ComputeHash(File.ReadAllBytes(filedia.FileName))).Replace("-", "").ToLower();
-                            }
-                            break;
-                        }
-                    default:
-                        break;
-                }
-            }
-
-        }
-        private void Button_MenuLeftSaveFile_Click(object sender, EventArgs e)
-        {
-            if (DATList != null)
-                PackageHandler.Save();
-            else
-                logger.Write(string.Format("Load a File before trying to save!"));
-        }
         #endregion
 
         #region Button Events MouseDown/Up/Enter/Leave
@@ -568,14 +489,91 @@ namespace KxEditor
         }
         #endregion
 
+        #region Menu Buttons
+        private void Button_RightTopExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = KxMsgBox.Show("Exit?", "Do you want to close?", KxMsgBoxIcon.QUESTION, KxMsgBoxButton.YESNO);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void Button_MenuLeftFileOpen_Click(object sender, EventArgs e)
+        {
+            if (Setting_CryptTable_comboBox.SelectedIndex == -1 || KxSharpLib.Security.Kal.Crypto.GUseCrypt == KxSharpLib.Security.Kal.Crypto.EUseCrypt.Unknown)
+            {
+                logger.Write("[Unknown CryptTable, Please set a valid table!]");
+                return;
+            }
+
+            if (DATList != null)
+            {
+                logger.Write("[There is already a file loaded!]");
+
+                DialogResult diaResult = KxMsgBox.Show("Already open!", "There is already a file loaded!\nClose without saving ?", KxMsgBoxIcon.WARNING, KxMsgBoxButton.YESNO);
+                switch (diaResult)
+                {
+                    case DialogResult.Yes:
+                        {
+                            Center_EditorTextBox.Clear();
+                            LoadedPK = new KxSharpLib.Kal.PK();
+                            DATList.Clear();
+                            DATList = null;
+                            treeView_PKiew.Nodes.Clear();
+                            Setting_CryptTable_comboBox.Enabled = true;
+                            KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, "Current File:   [None]");
+                            break;
+                        }
+
+                    case DialogResult.No:
+                        return;
+                    default:
+                        return;
+                }
+            }
+
+            using (OpenFileDialog filedia = new OpenFileDialog())
+            {
+                filedia.Title = "Open PK File";
+                filedia.Filter = "PK files|*.pk";
+                filedia.CheckFileExists = true;
+                filedia.CheckPathExists = true;
+
+                switch (filedia.ShowDialog(this))
+                {
+                    case DialogResult.OK:
+                        {
+                            _ = new PackageHandler(filedia.FileName);
+                            Setting_CryptTable_comboBox.Enabled = false;
+                            textBox_FileInfo_Name.Text = Path.GetFileName(filedia.FileName);
+                            textBox_FileInfo_Path.Text = filedia.FileName;
+                            using (var md5 = MD5.Create())
+                            {
+                                textBox_FileInfo_MD5.Text = BitConverter.ToString(md5.ComputeHash(File.ReadAllBytes(filedia.FileName))).Replace("-", "").ToLower();
+                            }
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            }
+
+        }
+
+        private void Button_MenuLeftSaveFile_Click(object sender, EventArgs e)
+        {
+            if (DATList != null)
+                PackageHandler.Save();
+            else
+                logger.Write(string.Format("Load a File before trying to save!"));
+        }
 
         private void Button_TopLeftLogo_Click(object sender, EventArgs e)
         {
             slidingPanel.Start();
         }
+        #endregion
 
-        private void Button_LeftMenuSmall_Settings_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

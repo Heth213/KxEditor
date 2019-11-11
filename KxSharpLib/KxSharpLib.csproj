@@ -54,6 +54,9 @@
     <Compile Include="EncryptTables.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="FormHelper.cs" />
+    <Compile Include="KxLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="KxPanel.cs">
       <SubType>Component</SubType>
     </Compile>

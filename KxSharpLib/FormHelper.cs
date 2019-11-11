@@ -17,6 +17,7 @@ namespace KxSharpLib
                 searchResult.Select();
             }
         }
+
         public static void DisableControls(Control con)
         {
             foreach (Control c in con.Controls)
@@ -25,6 +26,7 @@ namespace KxSharpLib
             }
             con.Enabled = false;
         }
+
         public static void EnableControls(Control con)
         {
             if (con != null)
@@ -33,6 +35,7 @@ namespace KxSharpLib
                 EnableControls(con.Parent);
             }
         }
+
         public static void HideControls(Control con)
         {
             foreach (Control c in con.Controls)
@@ -41,6 +44,7 @@ namespace KxSharpLib
             }
             con.Visible = false;
         }
+
         public static void ShowControls(Control con)
         {
             if (con != null)
@@ -49,27 +53,27 @@ namespace KxSharpLib
                 ShowControls(con.Parent);
             }
         }
+
         public static void SetLabelText(Label label, string text)
         {
             if (label.InvokeRequired)
                 label.Invoke(new Action(() => label.Text = text));
             else { label.Text = text; }
         }
+
         public static void Minimize(Form form)
         {
             form.WindowState = FormWindowState.Minimized;
         }
+
         public static void Maximize(Form form)
         {
             if (form.WindowState.ToString() == "Normal")
-            {
                 form.WindowState = FormWindowState.Maximized;
-            }
             else
-            {
                 form.WindowState = FormWindowState.Normal;
-            }
         }
+
         public static bool TryDrag(Form form, ref Message message, HashSet<Control> controlstomove)
         {
             if(message.Msg == (int)Win32.WM.LBUTTONDOWN && controlstomove.Contains(Control.FromHandle(message.HWnd)))

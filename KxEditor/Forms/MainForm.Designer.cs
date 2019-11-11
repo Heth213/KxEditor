@@ -786,7 +786,6 @@
             this.button_LeftMenuSmall_Settings.TabIndex = 2;
             this.button_LeftMenuSmall_Settings.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button_LeftMenuSmall_Settings.UseVisualStyleBackColor = true;
-            this.button_LeftMenuSmall_Settings.Click += new System.EventHandler(this.Button_LeftMenuSmall_Settings_Click);
             // 
             // panel_LeftOuterEdge
             // 
