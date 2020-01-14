@@ -45,6 +45,8 @@
             // panel_Main
             // 
             this.panel_Main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel_Main.BackgroundImage = global::KxEditor.Properties.Resources.KxLogo_Background;
+            this.panel_Main.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel_Main.Controls.Add(this.panel_Center);
             this.panel_Main.Controls.Add(this.kxPanel);
             this.panel_Main.Controls.Add(this.panel_Top);
@@ -55,6 +57,7 @@
             // 
             // panel_Center
             // 
+            this.panel_Center.BackColor = System.Drawing.Color.Transparent;
             this.panel_Center.Controls.Add(this.label_Version);
             this.panel_Center.Controls.Add(this.label_Title);
             this.panel_Center.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -65,7 +68,7 @@
             // 
             // panel_Top
             // 
-            this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel_Top.BackColor = System.Drawing.Color.Transparent;
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
@@ -106,28 +109,29 @@
             // 
             // kxPanel
             // 
-            this.kxPanel.GradientColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.kxPanel.Controls.Add(this.kxProgressBar);
             this.kxPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kxPanel.GradientColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.kxPanel.GradientColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.kxPanel.Location = new System.Drawing.Point(0, 108);
             this.kxPanel.Name = "kxPanel";
             this.kxPanel.Size = new System.Drawing.Size(500, 20);
             this.kxPanel.TabIndex = 2;
-            this.kxPanel.GradientColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             // 
             // kxProgressBar
             // 
             this.kxProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.kxProgressBar.GradientColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.kxProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kxProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.kxProgressBar.GradientColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.kxProgressBar.GradientColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.kxProgressBar.Location = new System.Drawing.Point(0, 0);
             this.kxProgressBar.MarqueeAnimationSpeed = 5;
             this.kxProgressBar.Name = "kxProgressBar";
             this.kxProgressBar.Size = new System.Drawing.Size(500, 20);
             this.kxProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.kxProgressBar.TabIndex = 1;
-            this.kxProgressBar.GradientColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.kxProgressBar.TextFont = new System.Drawing.Font("Ink Free", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // Splash
             // 

@@ -11,6 +11,8 @@ namespace KxSharpLib
 {
     public static class Win32
     {
+        public static readonly int GWL_EXSTYLE = -20;
+        public static readonly int WS_EX_COMPOSITED = 0x02000000;
 
         public enum HT : uint 
         {
@@ -24,7 +26,6 @@ namespace KxSharpLib
             TOPLEFT = 13,
             TOPRIGHT = 14,
         }
-
 
         /// <summary>
         /// Windows Messages
@@ -989,6 +990,8 @@ namespace KxSharpLib
             /// A top-level window is being replaced. The window exists when the system calls this hook.
             /// </summary>
             HSHELL_WINDOWREPLACED = 13
+
+
         }
 
         [DllImport("user32.dll")]
@@ -1071,6 +1074,12 @@ namespace KxSharpLib
             DESKTOPVERTRES = 117,
             // http://pinvoke.net/default.aspx/gdi32/GetDeviceCaps.html
         }
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
 
         public static float getScreenScalingFactor()

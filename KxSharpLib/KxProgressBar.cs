@@ -47,10 +47,28 @@ namespace KxSharpLib
         }
         #endregion
 
+        #region TextFont
+        private Font font = new Font("Ink Free", 10f, FontStyle.Bold);
+        [DefaultValue(typeof(Font), "Ink Free")]
+        [Category("Kx")]
+        [DisplayName("TextFont")]
+        [Description("TextFont")]
+        public Font TextFont
+        {
+            get { return font; }
+            set { font = value; Invalidate(); }
+        }
+        #endregion
 
         public KxProgressBar()
         {
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs p)
+        {
+            //SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            base.OnPaintBackground(p);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -72,14 +90,11 @@ namespace KxSharpLib
                 gfx.FillRectangle(brush, rec);
             }
 
-            using (SolidBrush sb = new SolidBrush(Color.GreenYellow))
+            using (SolidBrush brush = new SolidBrush(Color.GreenYellow))
             {
-                using (Font font = new Font("Ink Free", 10f, FontStyle.Bold))
-                {
-                    SizeF sz = gfx.MeasureString("Loading . . .", font);
-                    PointF pf = new PointF((Width - sz.Width) / 2F, (Height - sz.Height) / 2F);
-                    gfx.DrawString("Loading . . .", font, sb, pf);
-                }
+                SizeF textsize = gfx.MeasureString("Loading . . .", TextFont);
+                PointF drawpoint = new PointF((Width - textsize.Width) / 2F, (Height - textsize.Height) / 2F);
+                gfx.DrawString("Loading . . .", TextFont, brush, drawpoint);
             }
         }
     }

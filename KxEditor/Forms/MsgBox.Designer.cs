@@ -1,6 +1,6 @@
 ﻿namespace KxEditor
 {
-    partial class KxMsgBox
+    partial class MsgBox
     {
         /// <summary>
         /// Required designer variable.

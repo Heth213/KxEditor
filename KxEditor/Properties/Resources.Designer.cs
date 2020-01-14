@@ -213,6 +213,16 @@ namespace KxEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap KxLogo_Background {
+            get {
+                object obj = ResourceManager.GetObject("KxLogo_Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap KxLogo_Black_128px {
             get {
                 object obj = ResourceManager.GetObject("KxLogo_Black_128px", resourceCulture);

@@ -29,7 +29,7 @@ namespace KxEditor
 
         private void About_Load(object sender, EventArgs e)
         {
-            this.pictureBox_TopLeft.BackgroundImage = new Bitmap(Properties.Resources.KxIcon.ToBitmap());
+            this.pictureBox_TopLeft.BackgroundImage = new Bitmap(Properties.Resources.financial_changes_64px);
         }
         private void Button_RightTopExit_Click(object sender, EventArgs e)
         {

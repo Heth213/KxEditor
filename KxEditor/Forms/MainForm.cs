@@ -101,25 +101,24 @@ namespace KxEditor
         #region Constructor
         public MainForm()
         {
-            splashThread = new Thread(new ThreadStart(ShowSplash));
-            splashThread.Start();
-            Thread.Sleep(2000);
-
             InitializeComponent();
             Instance = this;
-            Application.AddMessageFilter(Instance);
+
+            splashThread = new Thread(new ThreadStart(ShowSplash));
+            splashThread.Start();
+            splashThread.Join(2500);
+
+            Application.AddMessageFilter(this);
             ControlsToMove = new HashSet<Control> {
-                Instance.panel_CenterTop,
-                Instance.panel_RightTopExit,
+                panel_CenterTop,
+                panel_RightTopExit,
             };
 
-            Instance.FormBorderStyle = FormBorderStyle.None;
-            Instance.DoubleBuffered = true;
-            Instance.SetStyle(ControlStyles.ResizeRedraw, true);
-            Instance.Size = new Size(950, 500);
-            Instance.MaximumSize = new Size(ScreenResolution.Width + 100, ScreenResolution.Height + 100);
-            Instance.MinimumSize = new Size(600, 400);
-            Instance.Center_EditorTextBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            FormBorderStyle = FormBorderStyle.None;
+            Size = new Size(950, 500);
+            MaximumSize = new Size(ScreenResolution.Width + 100, ScreenResolution.Height + 100);
+            MinimumSize = new Size(600, 400);
+            Center_EditorTextBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
 
             treeviewContextMenu = new ContextMenu();
             treeview_RightClickMenueItem_SaveAll = new MenuItem("Save All");
@@ -136,7 +135,7 @@ namespace KxEditor
             treeview_RightClickMenueItem_Add.Click += new EventHandler(Treeviw_RightClick_Add);
             treeview_RightClickMenueItem_Delete.Click += new EventHandler(Treeviw_RightClick_Delete);
 
-            slidingPanel = new Sliding_Panel(panel_MenuLeft, 130, 15, 10);
+            slidingPanel = new Sliding_Panel(panel_MenuLeft, 130, 10, 10);
 
             logger = new KxSharpLib.Utility.Logger(Center_LoggingTextBox);
             configuration = new Configuration();
@@ -149,7 +148,6 @@ namespace KxEditor
             }
             logger.Write("Initialized and ready!");
 
-            splashThread.Abort();
             KxSharpLib.Win32.SwitchToThisWindow(this.Handle, true);
         }
         #endregion
@@ -189,7 +187,7 @@ namespace KxEditor
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
-            Region NewRegion = new Region(new Rectangle(0, 0, ClientRectangle.Width, ClientRectangle.Height));
+            var NewRegion = new Region(new Rectangle(0, 0, ClientRectangle.Width, ClientRectangle.Height));
             SizeGripRectangle = new Rectangle(ClientRectangle.Width - ResizeHandelSize, ClientRectangle.Height - ResizeHandelSize, ResizeHandelSize, ResizeHandelSize);
             NewRegion.Exclude(SizeGripRectangle);
             panel_Main.Region = NewRegion;
@@ -198,7 +196,19 @@ namespace KxEditor
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            ControlPaint.DrawSizeGrip(e.Graphics, BackColor, SizeGripRectangle);
+            e.Graphics.FillRectangle(new SolidBrush(button_RightBottomCopyright.BackColor), SizeGripRectangle);
+            ControlPaint.DrawSizeGrip(e.Graphics, panel_CenterTop.BackColor, SizeGripRectangle);
+        }
+        // Enable Double buffering to reduce flickering.
+        // TODO: Some controls get transparent on maximizing the window.. Need to be fixed!
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= KxSharpLib.Win32.WS_EX_COMPOSITED;
+                return cp;
+            }
         }
         #endregion
 
@@ -208,7 +218,7 @@ namespace KxEditor
             if (e.Button == MouseButtons.Right)
             {
                 var clickPoint = new Point(e.X, e.Y);
-                TreeNode selectedNode = ((TreeView)sender).GetNodeAt(clickPoint);
+                var selectedNode = ((TreeView)sender).GetNodeAt(clickPoint);
                 if (selectedNode == null)
                     return;
 
@@ -221,24 +231,24 @@ namespace KxEditor
         }
         private void TreeView_PKiew_DoubleClick(object sender, EventArgs e)
         {
-            if (treeView_PKiew.SelectedNode == null)
+            if (treeView_PKiew.SelectedNode == null || treeView_PKiew.SelectedNode == treeView_PKiew.TopNode)
                 return;
 
-            if (treeView_PKiew.SelectedNode.Index == -1 || treeView_PKiew.SelectedNode == treeView_PKiew.TopNode)
+            var SelectedIndex = treeView_PKiew.SelectedNode.Index;
+
+            if (SelectedIndex == -1)
                 return;
 
             if (treenViewLastSelectedIndex != -1)
-            {
                 DATList[treenViewLastSelectedIndex].content = Center_EditorTextBox.Text;
-            }
 
-            KxSharpLib.Kal.DAT item = DATList[treeView_PKiew.SelectedNode.Index];
+            var item = DATList[SelectedIndex];
 
             Center_EditorTextBox.BeginUpdate();
             Center_EditorTextBox.Text = item.content;
             Center_EditorTextBox.EndUpdate();
 
-            treenViewLastSelectedIndex = treeView_PKiew.SelectedNode.Index;
+            treenViewLastSelectedIndex = SelectedIndex;
 
             logger.Write(string.Format("[File:({0})] >> [SelectedItem:({1})]", item.name, item.index));
             KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, string.Format("Current File:   [{0}]", item.name));
@@ -251,12 +261,12 @@ namespace KxEditor
 
             using(var saveFileDia = new SaveFileDialog())
             {
-                var dat = DATList[treeview_RightClickMenu_ClickedNodeIndex];
-                saveFileDia.FileName = dat.ToString().Replace(".dat", ".txt");
-                var datwithoutExt = dat.ToString().Replace(".dat", "");
+                var item = DATList[treeview_RightClickMenu_ClickedNodeIndex];
+                saveFileDia.FileName = item.ToString().Replace(".dat", ".txt");
+                var datwithoutExt = item.ToString().Replace(".dat", "");
                 if (saveFileDia.ShowDialog(this) == DialogResult.OK)
                 {
-                    File.WriteAllText(saveFileDia.FileName, dat.content);
+                    item.content.WriteToFile(saveFileDia.FileName);
                     logger.Write(string.Format("Saved: {0} to {1}", datwithoutExt, saveFileDia.FileName));
                 }
 
@@ -275,7 +285,7 @@ namespace KxEditor
                     var folderPath = folderBrowserDia.SelectedPath;
 
                     logger.Write(string.Format("FolderPath: {0}", folderPath));
-                    foreach (KxSharpLib.Kal.DAT dat in DATList)
+                    foreach (var dat in DATList)
                     {
                         var datAstxt = dat.ToString().Replace(".dat", ".txt");
                         var finalPath = Path.Combine(folderPath, datAstxt);
@@ -523,11 +533,8 @@ namespace KxEditor
         #region Menu Buttons
         private void Button_RightTopExit_Click(object sender, EventArgs e)
         {
-            DialogResult result = KxMsgBox.Show("Exit?", "Do you want to close?", KxMsgBoxIcon.QUESTION, KxMsgBoxButton.YESNO);
-            if (result == DialogResult.Yes)
-            {
+            if (MsgBox.Show("Exit?", "Do you want to close?", MsgBoxIcon.QUESTION, MsgBoxButton.YESNO) == MsgBoxResult.Yes)
                 Application.Exit();
-            }
         }
 
         private void Button_MenuLeftFileOpen_Click(object sender, EventArgs e)
@@ -542,10 +549,9 @@ namespace KxEditor
             {
                 logger.Write("[There is already a file loaded!]");
 
-                DialogResult diaResult = KxMsgBox.Show("Already open!", "There is already a file loaded!\nClose without saving ?", KxMsgBoxIcon.WARNING, KxMsgBoxButton.YESNO);
-                switch (diaResult)
+                switch (MsgBox.Show("Already open!", "There is already a file loaded!\nClose without saving ?", MsgBoxIcon.WARNING, MsgBoxButton.YESNO))
                 {
-                    case DialogResult.Yes:
+                    case MsgBoxResult.Yes:
                         {
                             Center_EditorTextBox.Clear();
                             LoadedPK = new KxSharpLib.Kal.PK();
@@ -557,7 +563,7 @@ namespace KxEditor
                             break;
                         }
 
-                    case DialogResult.No:
+                    case MsgBoxResult.No:
                         return;
                     default:
                         return;

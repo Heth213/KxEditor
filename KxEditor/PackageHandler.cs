@@ -27,8 +27,10 @@ namespace KxEditor
                         List<KxSharpLib.Kal.DAT> entries;
                         try
                         {
+                            MainForm.Instance.treeView_PKiew.BeginUpdate();
                             node = MainForm.Instance.treeView_PKiew.Nodes.Add(Path.GetFileName(MainForm.Instance.LoadedPK.Path));
                             entries = GetEntries(zipStream);
+                            MainForm.Instance.treeView_PKiew.EndUpdate();
                         }
                         catch (Exception)
                         {

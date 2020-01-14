@@ -113,11 +113,11 @@
     <Compile Include="Forms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\KxMsgBox.cs">
+    <Compile Include="Forms\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\KxMsgBox.Designer.cs">
-      <DependentUpon>KxMsgBox.cs</DependentUpon>
+    <Compile Include="Forms\MsgBox.Designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MDIArea.cs">
       <SubType>Form</SubType>
@@ -150,8 +150,8 @@
     <EmbeddedResource Include="Forms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\KxMsgBox.resx">
-      <DependentUpon>KxMsgBox.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MDIArea.resx">
       <DependentUpon>MDIArea.cs</DependentUpon>
@@ -333,6 +333,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KxLogo_Background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

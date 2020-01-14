@@ -11,6 +11,7 @@ namespace KxSharpLib.Security.Kal
             Korean = 949,
             WestEU = 1252,
         }
+
         public enum EUseCrypt
         {
             Unknown,
@@ -18,6 +19,7 @@ namespace KxSharpLib.Security.Kal
             c2015,
             c2018,
         };
+
         public enum ECryptTableType
         {
             Unknown,
@@ -36,13 +38,16 @@ namespace KxSharpLib.Security.Kal
             CFG = 47,
             E = 4,
             CFGADD = 11,
+            CFGNEW = CFG + CFGADD,
             MAX = 63,
         };
+
         public static int GKey
         {
             get;
             set;
         } = Convert.ToInt32(EKeys.CFG, CultureInfo.CurrentCulture);
+
         public static EUseCrypt GUseCrypt
         {
             get;
@@ -112,6 +117,7 @@ namespace KxSharpLib.Security.Kal
                     return Crypt(GetTable(ECryptTableType.d2006), key, input);
             }
         }
+
         public static byte Decrypt(byte input)
         {
             return Decrypt(GKey, input);
@@ -130,6 +136,7 @@ namespace KxSharpLib.Security.Kal
 
             return buffer;
         }
+
         public static string DecryptDat(byte[] input)
         {
             if (input == null)
