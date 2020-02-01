@@ -7,7 +7,8 @@ namespace KxSharpLib.Security.Kal
 {
     public static class Crypto
     {
-        public enum CodePage {
+        public enum CodePage 
+        {
             Korean = 949,
             WestEU = 1252,
         }
@@ -84,6 +85,7 @@ namespace KxSharpLib.Security.Kal
             }
         }
 
+
         public static byte Encrypt(int key, byte input)
         {
             switch (GUseCrypt)
@@ -102,6 +104,7 @@ namespace KxSharpLib.Security.Kal
         {
             return Encrypt(GKey, input);
         }
+
 
         public static byte Decrypt(int key, byte input)
         {
@@ -122,6 +125,7 @@ namespace KxSharpLib.Security.Kal
         {
             return Decrypt(GKey, input);
         }
+
 
         public static byte[] EncryptDat(string input)
         {
@@ -152,6 +156,7 @@ namespace KxSharpLib.Security.Kal
             byte[] utfcontent = Encoding.Convert(EUC, UTF, input);
             return UTF.GetString(utfcontent);
         }
+
 
         public static byte Crypt(byte[] table, int key, byte input)
         {

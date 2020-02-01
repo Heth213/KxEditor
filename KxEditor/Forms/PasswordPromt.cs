@@ -33,10 +33,10 @@ namespace KxEditor
         {
             switch (message.Msg)
             {
-                case (int)KxSharpLib.Win32.WM.NCHITTEST:
+                case (int)KxSharpLib.Util.Win32.WM.NCHITTEST:
                     base.WndProc(ref message);
                     if (SizeGripRectangle.Contains(PointToClient(new Point(message.LParam.ToInt32() & 0xffff, message.LParam.ToInt32() >> 16))))
-                        message.Result = new IntPtr((int)KxSharpLib.Win32.HT.BOTTOMRIGHT);
+                        message.Result = new IntPtr((int)KxSharpLib.Util.Win32.HT.BOTTOMRIGHT);
                     break;
                 default:
                     base.WndProc(ref message);
@@ -80,19 +80,19 @@ namespace KxEditor
         }
         private void Close_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(Close, Color.Red);
+            KxSharpLib.Util.Win32.SetControlForeColor(Close, Color.Red);
         }
         private void Close_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(Close, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(Close, Color.GreenYellow);
         }
         private void Close_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(Close, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(Close, Color.Black);
         }
         private void Close_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(Close, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(Close, Color.GreenYellow);
         }
         private void Close_MouseMove(object sender, MouseEventArgs e)
         {

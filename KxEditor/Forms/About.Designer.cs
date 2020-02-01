@@ -60,7 +60,7 @@
             this.panel_MainCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_MainCenter.Location = new System.Drawing.Point(0, 0);
             this.panel_MainCenter.Name = "panel_MainCenter";
-            this.panel_MainCenter.Size = new System.Drawing.Size(500, 250);
+            this.panel_MainCenter.Size = new System.Drawing.Size(500, 185);
             this.panel_MainCenter.TabIndex = 0;
             // 
             // label_About
@@ -68,9 +68,9 @@
             this.label_About.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label_About.Font = new System.Drawing.Font("Consolas", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_About.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label_About.Location = new System.Drawing.Point(105, 104);
+            this.label_About.Location = new System.Drawing.Point(105, 67);
             this.label_About.Name = "label_About";
-            this.label_About.Size = new System.Drawing.Size(314, 126);
+            this.label_About.Size = new System.Drawing.Size(314, 98);
             this.label_About.TabIndex = 4;
             this.label_About.Text = "KxEditor, a config editor for KalOnline.\r\nCopyright © Darn 2018 ~ 2019";
             this.label_About.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -79,7 +79,7 @@
             // 
             this.panel_BottomCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.panel_BottomCenter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_BottomCenter.Location = new System.Drawing.Point(105, 230);
+            this.panel_BottomCenter.Location = new System.Drawing.Point(105, 165);
             this.panel_BottomCenter.Name = "panel_BottomCenter";
             this.panel_BottomCenter.Size = new System.Drawing.Size(314, 20);
             this.panel_BottomCenter.TabIndex = 3;
@@ -100,7 +100,7 @@
             this.panel_Right.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel_Right.Location = new System.Drawing.Point(419, 0);
             this.panel_Right.Name = "panel_Right";
-            this.panel_Right.Size = new System.Drawing.Size(81, 250);
+            this.panel_Right.Size = new System.Drawing.Size(81, 185);
             this.panel_Right.TabIndex = 1;
             // 
             // panel_RightTop
@@ -137,7 +137,7 @@
             // 
             this.panelRightBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.panelRightBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRightBottom.Location = new System.Drawing.Point(0, 230);
+            this.panelRightBottom.Location = new System.Drawing.Point(0, 165);
             this.panelRightBottom.Name = "panelRightBottom";
             this.panelRightBottom.Size = new System.Drawing.Size(81, 20);
             this.panelRightBottom.TabIndex = 0;
@@ -150,7 +150,7 @@
             this.panel_LeftMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_LeftMenu.Location = new System.Drawing.Point(0, 0);
             this.panel_LeftMenu.Name = "panel_LeftMenu";
-            this.panel_LeftMenu.Size = new System.Drawing.Size(105, 250);
+            this.panel_LeftMenu.Size = new System.Drawing.Size(105, 185);
             this.panel_LeftMenu.TabIndex = 0;
             // 
             // panel_LeftCenter
@@ -158,7 +158,7 @@
             this.panel_LeftCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_LeftCenter.Location = new System.Drawing.Point(0, 33);
             this.panel_LeftCenter.Name = "panel_LeftCenter";
-            this.panel_LeftCenter.Size = new System.Drawing.Size(105, 197);
+            this.panel_LeftCenter.Size = new System.Drawing.Size(105, 132);
             this.panel_LeftCenter.TabIndex = 2;
             // 
             // panel_LeftTop
@@ -200,7 +200,7 @@
             // 
             this.panel_LeftBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.panel_LeftBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_LeftBottom.Location = new System.Drawing.Point(0, 230);
+            this.panel_LeftBottom.Location = new System.Drawing.Point(0, 165);
             this.panel_LeftBottom.Name = "panel_LeftBottom";
             this.panel_LeftBottom.Size = new System.Drawing.Size(105, 20);
             this.panel_LeftBottom.TabIndex = 0;
@@ -210,7 +210,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(500, 250);
+            this.ClientSize = new System.Drawing.Size(500, 185);
             this.Controls.Add(this.panel_MainCenter);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -37,35 +37,35 @@ namespace KxEditor
         }
         private void Button_RightTopExit_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Red);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.Red);
         }
         private void Button_RightTopExit_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
         }
         private void Button_RightTopExit_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.Black);
         }
         private void Button_RightTopExit_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
         }
         private void Label_AboutCaption_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(label_AboutCaption, Color.Red);
+            KxSharpLib.Util.Win32.SetControlForeColor(label_AboutCaption, Color.Red);
         }
         private void Label_AboutCaption_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(label_AboutCaption, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(label_AboutCaption, Color.GreenYellow);
         }
         private void Label_AboutCaption_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(label_AboutCaption, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(label_AboutCaption, Color.Black);
         }
         private void Label_AboutCaption_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(label_AboutCaption, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(label_AboutCaption, Color.GreenYellow);
         }
     }
 }

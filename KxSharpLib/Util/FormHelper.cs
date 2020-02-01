@@ -76,10 +76,10 @@ namespace KxSharpLib
 
         public static bool TryDrag(Form form, ref Message message, HashSet<Control> controlstomove)
         {
-            if(message.Msg == (int)Win32.WM.LBUTTONDOWN && controlstomove.Contains(Control.FromHandle(message.HWnd)))
+            if(message.Msg == (int)Util.Win32.WM.LBUTTONDOWN && controlstomove.Contains(Control.FromHandle(message.HWnd)))
             {
-                Win32.ReleaseCapture();
-                Win32.SendMessage(form.Handle, (int)Win32.WM.NCLBUTTONDOWN, (int)Win32.HT.CAPTION, 0);
+                Util.Win32.ReleaseCapture();
+                Util.Win32.SendMessage(form.Handle, (int)Util.Win32.WM.NCLBUTTONDOWN, (int)Util.Win32.HT.CAPTION, 0);
                 return true;
             }
             return false;

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security;
 using System.Text;
 using System.Windows.Forms;
 
-namespace KxSharpLib
+namespace KxSharpLib.Util
 {
     public static class Win32
     {
@@ -1095,9 +1092,9 @@ namespace KxSharpLib
 
         public static bool CreateFileIfNotExist(string filepath)
         {
-            if (!File.Exists(filepath))
+            if (!System.IO.File.Exists(filepath))
             {
-                File.Create(filepath).Dispose();
+                System.IO.File.Create(filepath).Dispose();
                 return true;
             }
             return false;

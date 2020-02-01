@@ -38,7 +38,7 @@
       <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\Vendor\SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,28 +52,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAT.cs" />
-    <Compile Include="DecryptTables.cs" />
-    <Compile Include="EncryptTables.cs" />
-    <Compile Include="Crypto.cs" />
-    <Compile Include="FormHelper.cs" />
-    <Compile Include="KxLabel.cs">
+    <Compile Include="Checksum\CrC32.cs" />
+    <Compile Include="Checksum\IChecksum.cs" />
+    <Compile Include="Exceptions\BaseException.cs" />
+    <Compile Include="Exceptions\DecodingException.cs" />
+    <Compile Include="Exceptions\EncodingException.cs" />
+    <Compile Include="File\FileManager.cs" />
+    <Compile Include="File\IFile.cs" />
+    <Compile Include="File\DAT.cs" />
+    <Compile Include="Crypto\DecryptTables.cs" />
+    <Compile Include="Crypto\EncryptTables.cs" />
+    <Compile Include="Crypto\Crypto.cs" />
+    <Compile Include="Util\FormHelper.cs" />
+    <Compile Include="Controls\KxLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="KxPanel.cs">
+    <Compile Include="Controls\KxPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="KxProgressBar.cs">
+    <Compile Include="Controls\KxProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="KxTreeView.cs">
+    <Compile Include="Controls\KxTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logger.cs" />
-    <Compile Include="PK.cs" />
+    <Compile Include="Util\Logger.cs" />
+    <Compile Include="File\PkFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleInstanceMutex.cs" />
-    <Compile Include="Win32.cs" />
+    <Compile Include="Util\SingleInstanceMutex.cs" />
+    <Compile Include="Util\SlidingPanel.cs" />
+    <Compile Include="Util\Win32.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

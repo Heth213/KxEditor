@@ -33,11 +33,11 @@ namespace KxEditor.Forms
 
         public bool PreFilterMessage(ref Message m)
         {
-            if (m.Msg == (int)KxSharpLib.Win32.WM.LBUTTONDOWN &&
+            if (m.Msg == (int)KxSharpLib.Util.Win32.WM.LBUTTONDOWN &&
                  ControlsToMove.Contains(FromHandle(m.HWnd)))
             {
-                KxSharpLib.Win32.ReleaseCapture();
-                KxSharpLib.Win32.SendMessage(Instance.Handle, (int)KxSharpLib.Win32.WM.NCLBUTTONDOWN, (int)KxSharpLib.Win32.HT.CAPTION, 0);
+                KxSharpLib.Util.Win32.ReleaseCapture();
+                KxSharpLib.Util.Win32.SendMessage(Instance.Handle, (int)KxSharpLib.Util.Win32.WM.NCLBUTTONDOWN, (int)KxSharpLib.Util.Win32.HT.CAPTION, 0);
                 return true;
             }
             return false;
@@ -54,10 +54,10 @@ namespace KxEditor.Forms
         {
             switch (message.Msg)
             {
-                case (int)KxSharpLib.Win32.WM.NCHITTEST:
+                case (int)KxSharpLib.Util.Win32.WM.NCHITTEST:
                     base.WndProc(ref message);
                     if (SizeGripRectangle.Contains(PointToClient(new Point(message.LParam.ToInt32() & 0xffff, message.LParam.ToInt32() >> 16))))
-                        message.Result = new IntPtr((int)KxSharpLib.Win32.HT.BOTTOMRIGHT);
+                        message.Result = new IntPtr((int)KxSharpLib.Util.Win32.HT.BOTTOMRIGHT);
                     break;
                 default:
                     base.WndProc(ref message);

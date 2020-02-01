@@ -13,11 +13,9 @@ namespace KxEditor
     {
         #region vars
         public static MainForm Instance { get; set; }
-        private HashSet<Control> ControlsToMove { get; set; }
+        public static Rectangle ScreenResolution => Screen.PrimaryScreen.Bounds;
 
-        public KxSharpLib.Kal.PK LoadedPK;
-        public List<KxSharpLib.Kal.DAT> DATList;
-
+        public KxSharpLib.File.PkFile gCurrentFile;
         public Configuration configuration;
         public KxSharpLib.Utility.Logger logger;
 
@@ -29,65 +27,11 @@ namespace KxEditor
         public MenuItem treeview_RightClickMenueItem_Delete;
         public int treeview_RightClickMenu_ClickedNodeIndex = -1;
 
-        public static Rectangle ScreenResolution => Screen.PrimaryScreen.Bounds;
+        public KxSharpLib.Util.SlidingPanel slidingPanel;
+
         private int ResizeHandelSize => 16;
         private Rectangle SizeGripRectangle;
-
-        public class Sliding_Panel 
-        {
-            public Panel panel;
-            public System.Windows.Forms.Timer timer;
-            public bool ishidden;
-            public int maxwidth;
-            public int widthincrement;
-            public Sliding_Panel(Panel _panel, int _maxwidth, int _widthincrement, int _timerinterval)
-            {
-                panel = _panel;
-                timer = new System.Windows.Forms.Timer
-                {
-                    Interval = _timerinterval
-                };
-                timer.Tick += new EventHandler(Timer_Tick);
-
-                maxwidth = _maxwidth;
-                panel.Width = 0;
-                ishidden = true;
-                widthincrement = _widthincrement;
-            }
-
-            public void Timer_Tick(object sender, EventArgs e)
-            {
-                if (ishidden)
-                {
-                    panel.Width += widthincrement;
-                    if (panel.Width >= maxwidth)
-                    {
-                        Stop();
-                        ishidden = false;
-                        panel.Refresh();
-                    }
-                }
-                else
-                {
-                    panel.Width -= widthincrement;
-                    if (panel.Width <= 0)
-                    {
-                        Stop();
-                        ishidden = true;
-                        panel.Refresh();
-                    }
-                }
-            }
-            public void Start()
-            {
-                timer.Start();
-            }
-            public void Stop()
-            {
-                timer.Stop();
-            }
-        }
-        public Sliding_Panel slidingPanel;
+        private HashSet<Control> ControlsToMove { get; set; }
         #endregion
 
         #region Splash
@@ -135,11 +79,10 @@ namespace KxEditor
             treeview_RightClickMenueItem_Add.Click += new EventHandler(Treeviw_RightClick_Add);
             treeview_RightClickMenueItem_Delete.Click += new EventHandler(Treeviw_RightClick_Delete);
 
-            slidingPanel = new Sliding_Panel(panel_MenuLeft, 130, 10, 10);
+            slidingPanel = new KxSharpLib.Util.SlidingPanel(panel_MenuLeft, 130, 10, 10);
 
             logger = new KxSharpLib.Utility.Logger(Center_LoggingTextBox);
             configuration = new Configuration();
-            LoadedPK = new KxSharpLib.Kal.PK();
 
             if (configuration.UseConfigurationFile)
             {
@@ -148,7 +91,7 @@ namespace KxEditor
             }
             logger.Write("Initialized and ready!");
 
-            KxSharpLib.Win32.SwitchToThisWindow(this.Handle, true);
+            KxSharpLib.Util.Win32.SwitchToThisWindow(this.Handle, true);
         }
         #endregion
 
@@ -175,9 +118,9 @@ namespace KxEditor
         {
             switch (message.Msg)
             {
-                case (int)KxSharpLib.Win32.WM.NCHITTEST:
+                case (int)KxSharpLib.Util.Win32.WM.NCHITTEST:
                     base.WndProc(ref message);
-                    if (SizeGripRectangle.Contains(PointToClient(new Point(message.LParam.ToInt32() & 0xffff, message.LParam.ToInt32() >> 16)))) message.Result = new IntPtr((int)KxSharpLib.Win32.HT.BOTTOMRIGHT);
+                    if (SizeGripRectangle.Contains(PointToClient(new Point(message.LParam.ToInt32() & 0xffff, message.LParam.ToInt32() >> 16)))) message.Result = new IntPtr((int)KxSharpLib.Util.Win32.HT.BOTTOMRIGHT);
                     break;
                 default:
                     base.WndProc(ref message);
@@ -206,7 +149,7 @@ namespace KxEditor
             get
             {
                 var cp = base.CreateParams;
-                cp.ExStyle |= KxSharpLib.Win32.WS_EX_COMPOSITED;
+                cp.ExStyle |= KxSharpLib.Util.Win32.WS_EX_COMPOSITED;
                 return cp;
             }
         }
@@ -240,18 +183,18 @@ namespace KxEditor
                 return;
 
             if (treenViewLastSelectedIndex != -1)
-                DATList[treenViewLastSelectedIndex].content = Center_EditorTextBox.Text;
+                gCurrentFile.FileList[treenViewLastSelectedIndex].Content = Center_EditorTextBox.Text;
 
-            var item = DATList[SelectedIndex];
+            var item = gCurrentFile.FileList[SelectedIndex];
 
             Center_EditorTextBox.BeginUpdate();
-            Center_EditorTextBox.Text = item.content;
+            Center_EditorTextBox.Text = item.Content;
             Center_EditorTextBox.EndUpdate();
 
             treenViewLastSelectedIndex = SelectedIndex;
 
-            logger.Write(string.Format("[File:({0})] >> [SelectedItem:({1})]", item.name, item.index));
-            KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, string.Format("Current File:   [{0}]", item.name));
+            logger.Write(string.Format("[File:({0})] >> [SelectedItem:({1})]", item.Name, item.Index));
+            KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, string.Format("Current File:   [{0}]", item.Name));
 
         }
         public void Treeviw_RightClick_SaveAs(object sender, EventArgs e)
@@ -261,12 +204,12 @@ namespace KxEditor
 
             using(var saveFileDia = new SaveFileDialog())
             {
-                var item = DATList[treeview_RightClickMenu_ClickedNodeIndex];
-                saveFileDia.FileName = item.ToString().Replace(".dat", ".txt");
-                var datwithoutExt = item.ToString().Replace(".dat", "");
+                var item = gCurrentFile.FileList[treeview_RightClickMenu_ClickedNodeIndex];
+                saveFileDia.FileName = item.Name.Replace(".dat", ".txt");
+                var datwithoutExt = item.Name.Replace(".dat", "");
                 if (saveFileDia.ShowDialog(this) == DialogResult.OK)
                 {
-                    item.content.WriteToFile(saveFileDia.FileName);
+                    item.Content.WriteToFile(saveFileDia.FileName);
                     logger.Write(string.Format("Saved: {0} to {1}", datwithoutExt, saveFileDia.FileName));
                 }
 
@@ -285,11 +228,11 @@ namespace KxEditor
                     var folderPath = folderBrowserDia.SelectedPath;
 
                     logger.Write(string.Format("FolderPath: {0}", folderPath));
-                    foreach (var dat in DATList)
+                    foreach (var item in gCurrentFile.FileList)
                     {
-                        var datAstxt = dat.ToString().Replace(".dat", ".txt");
+                        var datAstxt = item.Name.Replace(".dat", ".txt");
                         var finalPath = Path.Combine(folderPath, datAstxt);
-                        dat.content.WriteToFile(finalPath);
+                        item.Content.WriteToFile(finalPath);
                         logger.Write(string.Format("Saved: {0} to {1}", datAstxt, finalPath));
                     }
                 }
@@ -390,142 +333,142 @@ namespace KxEditor
 
         private void Button_LeftTopAppName_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.Red);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_LeftTopAppName, Color.Red);
             button_LeftTopAppName.Font = new Font("Ink Free", 16.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_LeftTopAppName_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
         }
         private void Button_LeftTopAppName_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, SystemColors.ControlText);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_LeftTopAppName, SystemColors.ControlText);
         }
         private void Button_LeftTopAppName_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
             button_LeftTopAppName.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
 
         private void Button_RightBottomCopyright_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.SteelBlue);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightBottomCopyright, Color.SteelBlue);
         }
         private void Button_RightBottomCopyright_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightBottomCopyright, Color.Black);
         }
         private void Button_RightBottomCopyright_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.White);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightBottomCopyright, Color.White);
         }
         private void Button_RightBottomCopyright_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.SteelBlue);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightBottomCopyright, Color.SteelBlue);
         }
 
         private void Button_MenuLeftFileOpen_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.GreenYellow);
             //button_MenuLeftFileOpen.Font = new Font("Ink Free", 13.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftFileOpen_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.SteelBlue);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.SteelBlue);
             //button_MenuLeftFileOpen.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
         private void Button_MenuLeftFileOpen_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.Black);
             //button_MenuLeftFileOpen.Font = new Font("Ink Free", 12.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftFileOpen_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.SteelBlue);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.SteelBlue);
             // button_MenuLeftFileOpen.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
 
         private void Button_MenuLeftSaveFile_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.GreenYellow);
             // button_MenuLeftSaveFile.Font = new Font("Ink Free", 13.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftSaveFile_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.SteelBlue);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.SteelBlue);
             //button_MenuLeftSaveFile.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
         private void Button_MenuLeftSaveFile_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.Black);
             //button_MenuLeftSaveFile.Font = new Font("Ink Free", 12.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftSaveFile_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.SteelBlue);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.SteelBlue);
             //button_MenuLeftSaveFile.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
 
         private void Button_RightTopExit_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Red);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.Red);
             //button_RightTopExit.Font = new Font("Ink Free", 17.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopExit_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
             //button_RightTopExit.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
         private void Button_RightTopExit_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.Black);
             // button_RightTopExit.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopExit_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
             // button_RightTopExit.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
 
         private void Button_RightTopMaximize_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.Red);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMaximize, Color.Red);
             //button_RightTopMaximize.Font = new Font("Ink Free", 17.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMaximize_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
             //button_RightTopMaximize.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
         private void Button_RightTopMaximize_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMaximize, Color.Black);
             // button_RightTopMaximize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMaximize_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
             // button_RightTopMaximize.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
 
         private void Button_RightTopMinimize_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.Red);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMinimize, Color.Red);
             // button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMinimize_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
             //button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold);
         }
         private void Button_RightTopMinimize_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.Black);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMinimize, Color.Black);
             //button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMinimize_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
+            KxSharpLib.Util.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
             // button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold);
         }
         #endregion
@@ -545,7 +488,7 @@ namespace KxEditor
                 return;
             }
 
-            if (DATList != null)
+            if (gCurrentFile != null)
             {
                 logger.Write("[There is already a file loaded!]");
 
@@ -553,14 +496,19 @@ namespace KxEditor
                 {
                     case MsgBoxResult.Yes:
                         {
+                            Center_EditorTextBox.BeginUpdate();
                             Center_EditorTextBox.Clear();
-                            LoadedPK = new KxSharpLib.Kal.PK();
-                            DATList.Clear();
-                            DATList = null;
+                            Center_EditorTextBox.EndUpdate();
+
+                            treeView_PKiew.BeginUpdate();
                             treeView_PKiew.Nodes.Clear();
+                            treeView_PKiew.EndUpdate();
+
                             Setting_CryptTable_comboBox.Enabled = true;
                             KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, "Current File:   [None]");
-                            break;
+                            gCurrentFile = null;
+                            GC.Collect();
+                            return;
                         }
 
                     case MsgBoxResult.No:
@@ -576,18 +524,25 @@ namespace KxEditor
                 filedia.Filter = "PK files|*.pk";
                 filedia.CheckFileExists = true;
                 filedia.CheckPathExists = true;
-
+                
                 switch (filedia.ShowDialog(this))
                 {
                     case DialogResult.OK:
                         {
-                            _ = new PackageHandler(filedia.FileName);
+                            using (PasswordPromt Pw_Promt = new PasswordPromt())
+                            {
+                                if (Pw_Promt.ShowDialog() == DialogResult.OK)
+                                {
+                                    gCurrentFile = new KxSharpLib.File.PkFile(filedia.FileName, Pw_Promt.Password, (byte)KxSharpLib.Security.Kal.Crypto.GKey, treeView_PKiew, logger);
+                                }
+                            }
+
                             Setting_CryptTable_comboBox.Enabled = false;
-                            textBox_FileInfo_Name.Text = Path.GetFileName(filedia.FileName);
-                            textBox_FileInfo_Path.Text = filedia.FileName;
+                            textBox_FileInfo_Name.Text = gCurrentFile.Name;
+                            textBox_FileInfo_Path.Text = gCurrentFile.Path;
                             using (var md5 = MD5.Create())
                             {
-                                textBox_FileInfo_MD5.Text = BitConverter.ToString(md5.ComputeHash(File.ReadAllBytes(filedia.FileName))).Replace("-", "").ToLower();
+                                textBox_FileInfo_MD5.Text = BitConverter.ToString(md5.ComputeHash(File.ReadAllBytes(gCurrentFile.Path))).Replace("-", "").ToLower();
                             }
                             break;
                         }
@@ -600,10 +555,10 @@ namespace KxEditor
 
         private void Button_MenuLeftSaveFile_Click(object sender, EventArgs e)
         {
-            if (DATList != null)
-                PackageHandler.Save();
-            else
-                logger.Write(string.Format("Load a File before trying to save!"));
+            if(treeView_PKiew.SelectedNode != null)
+                gCurrentFile.FileList[treeView_PKiew.SelectedNode.Index].Content = Center_EditorTextBox.Text;
+            if(gCurrentFile != null)
+                gCurrentFile.Save();
         }
 
         private void Button_TopLeftLogo_Click(object sender, EventArgs e)
