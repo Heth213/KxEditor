@@ -28,7 +28,6 @@
             this.panel_CenterTop = new System.Windows.Forms.Panel();
             this.label_CurrentFileTopCenter = new System.Windows.Forms.Label();
             this.panel_TreeViewRight = new System.Windows.Forms.Panel();
-            this.treeView_PKiew = new System.Windows.Forms.TreeView();
             this.panel_Right_FileInfo = new System.Windows.Forms.Panel();
             this.groupBox_Right_FileInfo = new System.Windows.Forms.GroupBox();
             this.textBox_FileInfo_MD5 = new System.Windows.Forms.TextBox();
@@ -66,6 +65,7 @@
             this.button_TopLeftLogo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_LeftBottomOuterEdge = new System.Windows.Forms.Panel();
+            this.treeView_PKiew = new KxSharpLib.Controls.KxTreeView();
             this.panel_Main.SuspendLayout();
             this.panel_TextEditCenter.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -285,18 +285,6 @@
             this.panel_TreeViewRight.Name = "panel_TreeViewRight";
             this.panel_TreeViewRight.Size = new System.Drawing.Size(197, 500);
             this.panel_TreeViewRight.TabIndex = 1;
-            // 
-            // treeView_PKiew
-            // 
-            this.treeView_PKiew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.treeView_PKiew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_PKiew.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView_PKiew.Location = new System.Drawing.Point(0, 33);
-            this.treeView_PKiew.Name = "treeView_PKiew";
-            this.treeView_PKiew.Size = new System.Drawing.Size(197, 333);
-            this.treeView_PKiew.TabIndex = 3;
-            this.treeView_PKiew.DoubleClick += new System.EventHandler(this.TreeView_PKiew_DoubleClick);
-            this.treeView_PKiew.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TreeView_PKiew_MouseUp);
             // 
             // panel_Right_FileInfo
             // 
@@ -843,6 +831,19 @@
             this.panel_LeftBottomOuterEdge.Size = new System.Drawing.Size(10, 20);
             this.panel_LeftBottomOuterEdge.TabIndex = 1;
             // 
+            // treeView_PKiew
+            // 
+            this.treeView_PKiew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.treeView_PKiew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treeView_PKiew.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_PKiew.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold);
+            this.treeView_PKiew.Location = new System.Drawing.Point(0, 33);
+            this.treeView_PKiew.Name = "treeView_PKiew";
+            this.treeView_PKiew.Size = new System.Drawing.Size(197, 333);
+            this.treeView_PKiew.TabIndex = 5;
+            this.treeView_PKiew.DoubleClick += new System.EventHandler(this.TreeView_PKiew_DoubleClick);
+            this.treeView_PKiew.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TreeView_PKiew_MouseUp);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -910,7 +911,6 @@
         public System.Windows.Forms.Panel panel_RightBottom;
         public System.Windows.Forms.Button button_RightBottomCopyright;
         public System.Windows.Forms.Panel panel_LeftBottom;
-        public System.Windows.Forms.TreeView treeView_PKiew;
         public System.Windows.Forms.Button button_RightTopMaximize;
         public System.Windows.Forms.Button button_RightTopMinimize;
         public System.Windows.Forms.Panel MainPanel;
@@ -939,6 +939,7 @@
         private System.Windows.Forms.Panel panel_LeftBottomOuterEdge;
         private System.Windows.Forms.Panel panel_LeftMenuSmall;
         public System.Windows.Forms.Button button_LeftMenuSmall_Settings;
+        private KxSharpLib.Controls.KxTreeView treeView_PKiew;
     }
 }
 

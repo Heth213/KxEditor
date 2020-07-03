@@ -32,10 +32,10 @@
             this.panel_Center = new System.Windows.Forms.Panel();
             this.panel_Top = new System.Windows.Forms.Panel();
             this.panel_Border = new System.Windows.Forms.Panel();
-            this.label_Version = new KxSharpLib.KxLabel();
-            this.label_Title = new KxSharpLib.KxLabel();
-            this.kxPanel = new KxSharpLib.KxPanel();
-            this.kxProgressBar = new KxSharpLib.KxProgressBar();
+            this.label_Version = new KxSharpLib.Controls.KxLabel();
+            this.label_Title = new KxSharpLib.Controls.KxLabel();
+            this.kxPanel = new KxSharpLib.Controls.KxPanel();
+            this.kxProgressBar = new KxSharpLib.Controls.KxProgressBar();
             this.panel_Main.SuspendLayout();
             this.panel_Center.SuspendLayout();
             this.panel_Border.SuspendLayout();
@@ -163,10 +163,10 @@
         private System.Windows.Forms.Panel panel_Main;
         private System.Windows.Forms.Panel panel_Top;
         private System.Windows.Forms.Panel panel_Center;
-        private KxSharpLib.KxProgressBar kxProgressBar;
-        private KxSharpLib.KxPanel kxPanel;
+        private KxSharpLib.Controls.KxProgressBar kxProgressBar;
+        private KxSharpLib.Controls.KxPanel kxPanel;
         private System.Windows.Forms.Panel panel_Border;
-        private KxSharpLib.KxLabel label_Title;
-        private KxSharpLib.KxLabel label_Version;
+        private KxSharpLib.Controls.KxLabel label_Title;
+        private KxSharpLib.Controls.KxLabel label_Version;
     }
 }

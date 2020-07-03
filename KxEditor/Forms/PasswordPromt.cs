@@ -70,6 +70,8 @@ namespace KxEditor
         {
             textBox1.Text = "EV)O8@BL$3O2E";
         }
+        // new PW?  In#ixFuc*kin!g
+
         private void Close_Click(object sender, EventArgs e)
         {
             Close();

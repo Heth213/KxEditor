@@ -3,9 +3,9 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 
-namespace KxSharpLib.Security.Kal
+namespace KxSharpLib.Security.Kal 
 {
-    public static class Crypto
+    public static class Crypto 
     {
         public enum CodePage 
         {
@@ -36,7 +36,7 @@ namespace KxSharpLib.Security.Kal
         public enum EKeys : int
         {
             Unknown,
-            CFG = 47,
+            CFG = 8,
             E = 4,
             CFGADD = 11,
             CFGNEW = CFG + CFGADD,

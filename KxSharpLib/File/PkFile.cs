@@ -9,46 +9,40 @@ namespace KxSharpLib.File
     public class PkFile : IFile
     {
         private string m_name;
-        public string Name 
-        {
-            get { return m_name; }
-            set { m_name = value; }
+        public string Name {
+            get => m_name;
+            set => m_name = value;
         }
 
         private string m_path;
-        public string Path 
-        {
-            get { return m_path; }
-            set { m_path = value; }
+        public string Path {
+            get => m_path;
+            set => m_path = value;
         }
 
         private string m_password;
-        public string Password 
-        {
-            get { return m_password; }
-            set { m_password = value; }
+        public string Password {
+            get => m_password;
+            set => m_password = value;
         }
 
         private byte m_key;
-        public byte Key 
-        {
-            get { return m_key; }
-            set { m_key = value; }
+        public byte Key {
+            get => m_key;
+            set => m_key = value;
         }
 
         private List<DAT> m_fileList;
-        public List<DAT> FileList 
-        {
-            get { return m_fileList; }
-            set { m_fileList = value; }
+        public List<DAT> FileList {
+            get => m_fileList;
+            set => m_fileList = value;
         }
 
-        private readonly TreeView _tview;
+        private readonly Controls.KxTreeView _tview;
         private readonly Utility.Logger _logger;
 
         public PkFile() => new PkFile("", "", 0, null, null);
-        public PkFile(string path, string pw, byte key, TreeView tview, Utility.Logger logger) 
-        {
+        public PkFile(string path, string pw, byte key, Controls.KxTreeView tview, Utility.Logger logger) {
             m_fileList = new List<DAT>();
             m_name = System.IO.Path.GetFileName(path);
             m_password = pw;
@@ -59,8 +53,10 @@ namespace KxSharpLib.File
             Load();
         }
 
+
         public void Load() 
         {
+
             using (ZipInputStream zipStream = new ZipInputStream(System.IO.File.OpenRead(m_path))) 
             {
                 zipStream.Password = m_password;
@@ -81,7 +77,7 @@ namespace KxSharpLib.File
                         });
                         bWorker.RunWorkerAsync();
                     }
-
+                    
                 } 
                 catch (Exception ex) 
                 {

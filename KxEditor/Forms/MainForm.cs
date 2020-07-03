@@ -36,14 +36,11 @@ namespace KxEditor
 
         #region Splash
         readonly Thread splashThread;
-        public void ShowSplash()
-        {
-            Application.Run(new Forms.Splash());
-        }
+        public void ShowSplash() { Application.Run(new Forms.Splash()); }
         #endregion
 
         #region Constructor
-        public MainForm()
+        public MainForm(string[] args)
         {
             InitializeComponent();
             Instance = this;
@@ -92,6 +89,27 @@ namespace KxEditor
             logger.Write("Initialized and ready!");
 
             KxSharpLib.Util.Win32.SwitchToThisWindow(this.Handle, true);
+
+            // TODO: Fix this ugly temporary $hiz! 
+            if (args.Length > 0) {
+                if (Path.GetExtension(args[0]) == ".dat") {
+                    var filepath = args[0];
+                    var filename = System.IO.Path.GetFileName(filepath);
+                    var filenamenoext = System.IO.Path.GetFileNameWithoutExtension(filepath);
+                    logger.Write(filepath);
+                    logger.Write(filename);
+
+                    KxSharpLib.Security.Kal.Crypto.GUseCrypt = KxSharpLib.Security.Kal.Crypto.EUseCrypt.c2018;
+                    KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.E;
+                    KxSharpLib.File.DAT dat = new KxSharpLib.File.DAT(0, filename, File.ReadAllBytes(filepath));
+                    Center_EditorTextBox.BeginUpdate();
+                    Center_EditorTextBox.Text = dat.Content;
+                    Center_EditorTextBox.EndUpdate();
+                    dat.Content.WriteToFile(string.Format("{0}.txt", filenamenoext));
+                }
+            }
+
+
         }
         #endregion
 
@@ -566,6 +584,7 @@ namespace KxEditor
             slidingPanel.Start();
         }
         #endregion
+
 
     }
 }

@@ -3,8 +3,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace KxSharpLib
+namespace KxSharpLib.Controls
 {
+    [ToolboxItem(true)]
     public class KxLabel : Label
     {
         #region GradientColorTop
@@ -22,6 +23,7 @@ namespace KxSharpLib
 
         #region GradientColorBottom
         private Color gradientcolorbottom = Color.White;
+
         [DefaultValue(typeof(Color), "Black")]
         [Category("Kx")]
         [DisplayName("Bottom Gradient Color")]
@@ -58,6 +60,13 @@ namespace KxSharpLib
             {
                 gfx.DrawString(Text, Font, brush, 0, 0);
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ResumeLayout(false);
+
         }
     }
 }
