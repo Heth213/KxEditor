@@ -54,6 +54,10 @@ namespace KxEditor
                 }
             }
         }
+
+
+
+
         private List<KxSharpLib.Kal.DAT> GetEntries(ZipInputStream zipStream) {
             List<KxSharpLib.Kal.DAT> files = new List<KxSharpLib.Kal.DAT>();
             ZipEntry zipEntry;

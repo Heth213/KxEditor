@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>KxEditor</RootNamespace>
     <AssemblyName>KxEditor</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -125,6 +125,12 @@
     <Compile Include="Forms\MDIArea.Designer.cs">
       <DependentUpon>MDIArea.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\datName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\datName.Designer.cs">
+      <DependentUpon>datName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PasswordPromt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PackageHandler.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MDIArea.resx">
       <DependentUpon>MDIArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\datName.resx">
+      <DependentUpon>datName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PasswordPromt.resx">
       <DependentUpon>PasswordPromt.cs</DependentUpon>
@@ -178,7 +188,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
