@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Windows.Forms;
 using KxExtension;
+using Microsoft.VisualBasic;
 
 namespace KxEditor
 {
@@ -227,10 +228,10 @@ namespace KxEditor
             if (treeView_PKiew.SelectedNode.Index == -1 || treeView_PKiew.SelectedNode == treeView_PKiew.TopNode)
                 return;
 
-            if (treenViewLastSelectedIndex != -1)
-            {
-                DATList[treenViewLastSelectedIndex].content = Center_EditorTextBox.Text;
-            }
+           // if (treenViewLastSelectedIndex != -1)
+            //{
+             //   DATList[treenViewLastSelectedIndex].content = Center_EditorTextBox.Text;
+            //}
 
             KxSharpLib.Kal.DAT item = DATList[treeView_PKiew.SelectedNode.Index];
 
@@ -289,9 +290,27 @@ namespace KxEditor
 
         public void Treeviw_RightClick_Add(object sender, EventArgs e)
         {
-            if (treeview_RightClickMenu_ClickedNodeIndex == -1)
-                return;
+            if (treeview_RightClickMenu_ClickedNodeIndex == -1) return;
 
+            if (treeView_PKiew.SelectedNode != null)
+            {
+
+                string myNewDatName;
+                datName testDialog = new datName();
+                if (testDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    myNewDatName = datName.datFileName.Trim()+".dat";
+                } else
+                {
+                    testDialog.Dispose();
+                    return;
+                }
+                testDialog.Dispose();
+                treeView_PKiew.Nodes[0].Nodes.Add(myNewDatName);
+                List<byte> input = new List<byte>();
+                DATList.Add(new KxSharpLib.Kal.DAT(DATList.Count + 1, myNewDatName, input.ToArray()));
+                logger.Write(string.Format("Added: {0}", myNewDatName));
+            }
 
             treeview_RightClickMenu_ClickedNodeIndex = -1;
         }
@@ -300,8 +319,11 @@ namespace KxEditor
         {
             if (treeview_RightClickMenu_ClickedNodeIndex == -1)
                 return;
-
-
+            
+            logger.Write(string.Format("Removed: {0}", treeView_PKiew.SelectedNode.Text));
+            treeView_PKiew.Nodes[0].Nodes.RemoveAt(treeview_RightClickMenu_ClickedNodeIndex);
+            DATList.RemoveAt(treeview_RightClickMenu_ClickedNodeIndex);
+            
             treeview_RightClickMenu_ClickedNodeIndex = -1;
         }
         #endregion
@@ -380,142 +402,144 @@ namespace KxEditor
 
         private void Button_LeftTopAppName_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.Red);
+            //KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.Red);
             button_LeftTopAppName.Font = new Font("Ink Free", 16.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_LeftTopAppName_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
         }
         private void Button_LeftTopAppName_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, SystemColors.ControlText);
+           // KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, SystemColors.ControlText);
         }
         private void Button_LeftTopAppName_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
             button_LeftTopAppName.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
 
         private void Button_RightBottomCopyright_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.SteelBlue);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.DimGray);
+          
         }
         private void Button_RightBottomCopyright_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.Black);
+          
+            //KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.Silver);
         }
         private void Button_RightBottomCopyright_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.White);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.White);
         }
         private void Button_RightBottomCopyright_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.SteelBlue);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightBottomCopyright, Color.SteelBlue);
         }
 
         private void Button_MenuLeftFileOpen_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.GreenYellow);
             //button_MenuLeftFileOpen.Font = new Font("Ink Free", 13.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftFileOpen_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.SteelBlue);
+            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.DimGray);
             //button_MenuLeftFileOpen.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
         private void Button_MenuLeftFileOpen_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.Black);
+            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.Silver);
             //button_MenuLeftFileOpen.Font = new Font("Ink Free", 12.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftFileOpen_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.SteelBlue);
+            //KxSharpLib.Win32.SetControlForeColor(button_MenuLeftFileOpen, Color.SteelBlue);
             // button_MenuLeftFileOpen.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
 
         private void Button_MenuLeftSaveFile_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.GreenYellow);
             // button_MenuLeftSaveFile.Font = new Font("Ink Free", 13.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftSaveFile_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.SteelBlue);
+            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.DimGray);
             //button_MenuLeftSaveFile.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
         private void Button_MenuLeftSaveFile_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.Black);
+            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.Silver);
             //button_MenuLeftSaveFile.Font = new Font("Ink Free", 12.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_MenuLeftSaveFile_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.SteelBlue);
+            //KxSharpLib.Win32.SetControlForeColor(button_MenuLeftSaveFile, Color.SteelBlue);
             //button_MenuLeftSaveFile.Font = new Font("Ink Free", 12.0F, FontStyle.Bold);
         }
 
         private void Button_RightTopExit_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Red);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Red);
             //button_RightTopExit.Font = new Font("Ink Free", 17.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopExit_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
             //button_RightTopExit.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
         private void Button_RightTopExit_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Black);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.Black);
             // button_RightTopExit.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopExit_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopExit, Color.GreenYellow);
             // button_RightTopExit.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
 
         private void Button_RightTopMaximize_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.Red);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.Red);
             //button_RightTopMaximize.Font = new Font("Ink Free", 17.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMaximize_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
             //button_RightTopMaximize.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
         private void Button_RightTopMaximize_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.Black);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.Black);
             // button_RightTopMaximize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMaximize_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
+           // KxSharpLib.Win32.SetControlForeColor(button_RightTopMaximize, Color.GreenYellow);
             // button_RightTopMaximize.Font = new Font("Ink Free", 16.0F, FontStyle.Bold);
         }
 
         private void Button_RightTopMinimize_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.Red);
+           // KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.Red);
             // button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMinimize_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
+           // KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
             //button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold);
         }
         private void Button_RightTopMinimize_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.Black);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.Black);
             //button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_RightTopMinimize_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
+            //KxSharpLib.Win32.SetControlForeColor(button_RightTopMinimize, Color.GreenYellow);
             // button_RightTopMinimize.Font = new Font("Ink Free", 15.0F, FontStyle.Bold);
         }
         #endregion
@@ -606,5 +630,14 @@ namespace KxEditor
         }
         #endregion
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            slidingPanel.Start();
+        }
+
+        private void panel_RightTopExit_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

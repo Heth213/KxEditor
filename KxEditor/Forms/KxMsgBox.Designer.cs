@@ -88,7 +88,7 @@
             this.button_CANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_CANCEL.Font = new System.Drawing.Font("Consolas", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_CANCEL.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button_CANCEL.Location = new System.Drawing.Point(310, 90);
+            this.button_CANCEL.Location = new System.Drawing.Point(310, 92);
             this.button_CANCEL.Name = "button_CANCEL";
             this.button_CANCEL.Size = new System.Drawing.Size(75, 23);
             this.button_CANCEL.TabIndex = 3;
@@ -103,7 +103,7 @@
             this.button_YES.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_YES.Font = new System.Drawing.Font("Consolas", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.button_YES.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button_YES.Location = new System.Drawing.Point(390, 90);
+            this.button_YES.Location = new System.Drawing.Point(390, 92);
             this.button_YES.Name = "button_YES";
             this.button_YES.Size = new System.Drawing.Size(75, 23);
             this.button_YES.TabIndex = 2;
@@ -118,7 +118,7 @@
             this.button_NO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_NO.Font = new System.Drawing.Font("Consolas", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_NO.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button_NO.Location = new System.Drawing.Point(390, 90);
+            this.button_NO.Location = new System.Drawing.Point(390, 92);
             this.button_NO.Name = "button_NO";
             this.button_NO.Size = new System.Drawing.Size(75, 23);
             this.button_NO.TabIndex = 1;
@@ -133,7 +133,7 @@
             this.button_OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_OK.Font = new System.Drawing.Font("Consolas", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_OK.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button_OK.Location = new System.Drawing.Point(390, 90);
+            this.button_OK.Location = new System.Drawing.Point(390, 92);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
             this.button_OK.TabIndex = 0;
@@ -144,7 +144,7 @@
             // 
             // panel_Bottom
             // 
-            this.panel_Bottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.panel_Bottom.BackColor = System.Drawing.Color.Silver;
             this.panel_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_Bottom.Location = new System.Drawing.Point(0, 153);
             this.panel_Bottom.Name = "panel_Bottom";
@@ -153,7 +153,7 @@
             // 
             // panel_Top
             // 
-            this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_Top.BackColor = System.Drawing.Color.Silver;
             this.panel_Top.Controls.Add(this.button_TopExit);
             this.panel_Top.Controls.Add(this.label_TopCaption);
             this.panel_Top.Controls.Add(this.pictureBox_TopIcon);
@@ -170,7 +170,7 @@
             this.button_TopExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_TopExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_TopExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_TopExit.Font = new System.Drawing.Font("Ink Free", 15F, System.Drawing.FontStyle.Bold);
+            this.button_TopExit.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_TopExit.Location = new System.Drawing.Point(456, 0);
             this.button_TopExit.Name = "button_TopExit";
             this.button_TopExit.Size = new System.Drawing.Size(29, 33);
@@ -187,10 +187,10 @@
             // 
             this.label_TopCaption.AutoSize = true;
             this.label_TopCaption.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_TopCaption.Font = new System.Drawing.Font("Ink Free", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TopCaption.Location = new System.Drawing.Point(42, 5);
+            this.label_TopCaption.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_TopCaption.Location = new System.Drawing.Point(42, 6);
             this.label_TopCaption.Name = "label_TopCaption";
-            this.label_TopCaption.Size = new System.Drawing.Size(77, 23);
+            this.label_TopCaption.Size = new System.Drawing.Size(82, 22);
             this.label_TopCaption.TabIndex = 1;
             this.label_TopCaption.Text = "Caption";
             this.label_TopCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

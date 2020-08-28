@@ -72,12 +72,13 @@
             this.label_About.Name = "label_About";
             this.label_About.Size = new System.Drawing.Size(314, 126);
             this.label_About.TabIndex = 4;
-            this.label_About.Text = "KxEditor, a config editor for KalOnline.\r\nCopyright © Darn 2018 ~ 2019";
+            this.label_About.Text = "KxEditor, a config editor for KalOnline.\r\nCopyright © Darn 2018 ~ 2019 Modified b" +
+    "y Heth";
             this.label_About.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel_BottomCenter
             // 
-            this.panel_BottomCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.panel_BottomCenter.BackColor = System.Drawing.Color.Silver;
             this.panel_BottomCenter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_BottomCenter.Location = new System.Drawing.Point(105, 230);
             this.panel_BottomCenter.Name = "panel_BottomCenter";
@@ -86,7 +87,7 @@
             // 
             // panel_TopCenter
             // 
-            this.panel_TopCenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_TopCenter.BackColor = System.Drawing.Color.Silver;
             this.panel_TopCenter.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_TopCenter.Location = new System.Drawing.Point(105, 0);
             this.panel_TopCenter.Name = "panel_TopCenter";
@@ -105,7 +106,7 @@
             // 
             // panel_RightTop
             // 
-            this.panel_RightTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_RightTop.BackColor = System.Drawing.Color.Silver;
             this.panel_RightTop.Controls.Add(this.button_RightTopExit);
             this.panel_RightTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_RightTop.Location = new System.Drawing.Point(0, 0);
@@ -135,7 +136,7 @@
             // 
             // panelRightBottom
             // 
-            this.panelRightBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.panelRightBottom.BackColor = System.Drawing.Color.Silver;
             this.panelRightBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelRightBottom.Location = new System.Drawing.Point(0, 230);
             this.panelRightBottom.Name = "panelRightBottom";
@@ -163,7 +164,7 @@
             // 
             // panel_LeftTop
             // 
-            this.panel_LeftTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_LeftTop.BackColor = System.Drawing.Color.Silver;
             this.panel_LeftTop.Controls.Add(this.label_AboutCaption);
             this.panel_LeftTop.Controls.Add(this.pictureBox_TopLeft);
             this.panel_LeftTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -188,6 +189,7 @@
             // 
             // pictureBox_TopLeft
             // 
+            this.pictureBox_TopLeft.BackColor = System.Drawing.Color.Silver;
             this.pictureBox_TopLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox_TopLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox_TopLeft.Location = new System.Drawing.Point(0, 0);
@@ -198,7 +200,7 @@
             // 
             // panel_LeftBottom
             // 
-            this.panel_LeftBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.panel_LeftBottom.BackColor = System.Drawing.Color.Silver;
             this.panel_LeftBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_LeftBottom.Location = new System.Drawing.Point(0, 230);
             this.panel_LeftBottom.Name = "panel_LeftBottom";

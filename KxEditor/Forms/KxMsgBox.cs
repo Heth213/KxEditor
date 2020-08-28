@@ -164,19 +164,19 @@ namespace KxEditor
         }
         private void Button_TopExit_MouseDown(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_TopExit, Color.Red);
+           
         }
         private void Button_TopExit_MouseEnter(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_TopExit, Color.GreenYellow);
+           
         }
         private void Button_TopExit_MouseLeave(object sender, EventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_TopExit, Color.Black);
+          
         }
         private void Button_TopExit_MouseUp(object sender, MouseEventArgs e)
         {
-            KxSharpLib.Win32.SetControlForeColor(button_TopExit, Color.GreenYellow);
+           
         }
     }
 }

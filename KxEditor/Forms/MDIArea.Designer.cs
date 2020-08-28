@@ -73,7 +73,7 @@
             // 
             // panel_Top
             // 
-            this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_Top.BackColor = System.Drawing.Color.Silver;
             this.panel_Top.Controls.Add(this.label2);
             this.panel_Top.Controls.Add(this.panel3);
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
@@ -104,7 +104,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.button1.BackColor = System.Drawing.Color.Silver;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

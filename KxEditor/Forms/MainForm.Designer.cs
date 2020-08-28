@@ -163,7 +163,6 @@
             this.Center_EditorTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Center_EditorTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.Center_EditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Center_EditorTextBox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Center_EditorTextBox.ForeColor = System.Drawing.Color.Gray;
             this.Center_EditorTextBox.HighlightFoldingIndicator = false;
             this.Center_EditorTextBox.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
@@ -220,7 +219,6 @@
             this.Center_LoggingTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Center_LoggingTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.Center_LoggingTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Center_LoggingTextBox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.Center_LoggingTextBox.ForeColor = System.Drawing.Color.LightGray;
             this.Center_LoggingTextBox.HighlightFoldingIndicator = false;
             this.Center_LoggingTextBox.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
@@ -243,7 +241,7 @@
             // 
             // panel_CenterBottom
             // 
-            this.panel_CenterBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.panel_CenterBottom.BackColor = System.Drawing.Color.Silver;
             this.panel_CenterBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel_CenterBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_CenterBottom.Location = new System.Drawing.Point(0, 480);
@@ -253,7 +251,7 @@
             // 
             // panel_CenterTop
             // 
-            this.panel_CenterTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_CenterTop.BackColor = System.Drawing.Color.Silver;
             this.panel_CenterTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel_CenterTop.Controls.Add(this.label_CurrentFileTopCenter);
             this.panel_CenterTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -266,10 +264,10 @@
             // label_CurrentFileTopCenter
             // 
             this.label_CurrentFileTopCenter.AutoSize = true;
-            this.label_CurrentFileTopCenter.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_CurrentFileTopCenter.Location = new System.Drawing.Point(6, 17);
+            this.label_CurrentFileTopCenter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label_CurrentFileTopCenter.Location = new System.Drawing.Point(6, 10);
             this.label_CurrentFileTopCenter.Name = "label_CurrentFileTopCenter";
-            this.label_CurrentFileTopCenter.Size = new System.Drawing.Size(189, 15);
+            this.label_CurrentFileTopCenter.Size = new System.Drawing.Size(183, 19);
             this.label_CurrentFileTopCenter.TabIndex = 0;
             this.label_CurrentFileTopCenter.Text = "Current File:       [None]";
             this.label_CurrentFileTopCenter.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -293,6 +291,8 @@
             this.treeView_PKiew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.treeView_PKiew.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView_PKiew.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView_PKiew.ForeColor = System.Drawing.Color.White;
+            this.treeView_PKiew.LineColor = System.Drawing.Color.LightCoral;
             this.treeView_PKiew.Location = new System.Drawing.Point(0, 33);
             this.treeView_PKiew.Name = "treeView_PKiew";
             this.treeView_PKiew.Size = new System.Drawing.Size(197, 333);
@@ -324,6 +324,7 @@
             this.groupBox_Right_FileInfo.Controls.Add(this.label_FileInfo_TitleName);
             this.groupBox_Right_FileInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox_Right_FileInfo.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Right_FileInfo.ForeColor = System.Drawing.Color.Silver;
             this.groupBox_Right_FileInfo.Location = new System.Drawing.Point(6, 6);
             this.groupBox_Right_FileInfo.Name = "groupBox_Right_FileInfo";
             this.groupBox_Right_FileInfo.Size = new System.Drawing.Size(186, 102);
@@ -374,11 +375,11 @@
             // 
             this.label_FileInfo_TitleMD5.AutoSize = true;
             this.label_FileInfo_TitleMD5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.label_FileInfo_TitleMD5.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileInfo_TitleMD5.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FileInfo_TitleMD5.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label_FileInfo_TitleMD5.Location = new System.Drawing.Point(6, 67);
             this.label_FileInfo_TitleMD5.Name = "label_FileInfo_TitleMD5";
-            this.label_FileInfo_TitleMD5.Size = new System.Drawing.Size(35, 15);
+            this.label_FileInfo_TitleMD5.Size = new System.Drawing.Size(35, 16);
             this.label_FileInfo_TitleMD5.TabIndex = 3;
             this.label_FileInfo_TitleMD5.Text = "MD5:";
             this.label_FileInfo_TitleMD5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -387,11 +388,11 @@
             // 
             this.label_FileInfo_TitlePath.AutoSize = true;
             this.label_FileInfo_TitlePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.label_FileInfo_TitlePath.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileInfo_TitlePath.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FileInfo_TitlePath.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label_FileInfo_TitlePath.Location = new System.Drawing.Point(6, 43);
             this.label_FileInfo_TitlePath.Name = "label_FileInfo_TitlePath";
-            this.label_FileInfo_TitlePath.Size = new System.Drawing.Size(42, 15);
+            this.label_FileInfo_TitlePath.Size = new System.Drawing.Size(36, 16);
             this.label_FileInfo_TitlePath.TabIndex = 2;
             this.label_FileInfo_TitlePath.Text = "Path:";
             this.label_FileInfo_TitlePath.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -399,11 +400,11 @@
             // label_FileInfo_TitleName
             // 
             this.label_FileInfo_TitleName.AutoSize = true;
-            this.label_FileInfo_TitleName.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileInfo_TitleName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FileInfo_TitleName.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label_FileInfo_TitleName.Location = new System.Drawing.Point(6, 18);
             this.label_FileInfo_TitleName.Name = "label_FileInfo_TitleName";
-            this.label_FileInfo_TitleName.Size = new System.Drawing.Size(42, 15);
+            this.label_FileInfo_TitleName.Size = new System.Drawing.Size(41, 16);
             this.label_FileInfo_TitleName.TabIndex = 1;
             this.label_FileInfo_TitleName.Text = "Name:";
             this.label_FileInfo_TitleName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -421,14 +422,14 @@
             // 
             // button_RightBottomCopyright
             // 
-            this.button_RightBottomCopyright.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.button_RightBottomCopyright.BackColor = System.Drawing.Color.Silver;
             this.button_RightBottomCopyright.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_RightBottomCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_RightBottomCopyright.FlatAppearance.BorderSize = 0;
             this.button_RightBottomCopyright.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.button_RightBottomCopyright.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.button_RightBottomCopyright.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_RightBottomCopyright.Font = new System.Drawing.Font("Ink Free", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_RightBottomCopyright.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_RightBottomCopyright.ForeColor = System.Drawing.Color.Black;
             this.button_RightBottomCopyright.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button_RightBottomCopyright.Location = new System.Drawing.Point(0, 0);
@@ -437,7 +438,7 @@
             this.button_RightBottomCopyright.TabIndex = 0;
             this.button_RightBottomCopyright.Text = "Copyright © Darn 2018 ~ 2019";
             this.button_RightBottomCopyright.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button_RightBottomCopyright.UseVisualStyleBackColor = true;
+            this.button_RightBottomCopyright.UseVisualStyleBackColor = false;
             this.button_RightBottomCopyright.Click += new System.EventHandler(this.Button_RightBottomCopyright_Click);
             this.button_RightBottomCopyright.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Button_RightBottomCopyright_MouseDown);
             this.button_RightBottomCopyright.MouseEnter += new System.EventHandler(this.Button_RightBottomCopyright_MouseEnter);
@@ -446,7 +447,7 @@
             // 
             // panel_RightTopExit
             // 
-            this.panel_RightTopExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_RightTopExit.BackColor = System.Drawing.Color.Silver;
             this.panel_RightTopExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel_RightTopExit.Controls.Add(this.button_RightTopMinimize);
             this.panel_RightTopExit.Controls.Add(this.button_RightTopMaximize);
@@ -456,6 +457,7 @@
             this.panel_RightTopExit.Name = "panel_RightTopExit";
             this.panel_RightTopExit.Size = new System.Drawing.Size(197, 33);
             this.panel_RightTopExit.TabIndex = 1;
+            this.panel_RightTopExit.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_RightTopExit_Paint);
             // 
             // button_RightTopMinimize
             // 
@@ -464,7 +466,7 @@
             this.button_RightTopMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_RightTopMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_RightTopMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_RightTopMinimize.Font = new System.Drawing.Font("Ink Free", 15F, System.Drawing.FontStyle.Bold);
+            this.button_RightTopMinimize.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button_RightTopMinimize.Location = new System.Drawing.Point(110, 0);
             this.button_RightTopMinimize.Name = "button_RightTopMinimize";
             this.button_RightTopMinimize.Size = new System.Drawing.Size(29, 33);
@@ -484,7 +486,7 @@
             this.button_RightTopMaximize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_RightTopMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_RightTopMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_RightTopMaximize.Font = new System.Drawing.Font("Ink Free", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_RightTopMaximize.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button_RightTopMaximize.Location = new System.Drawing.Point(139, 0);
             this.button_RightTopMaximize.Name = "button_RightTopMaximize";
             this.button_RightTopMaximize.Size = new System.Drawing.Size(29, 33);
@@ -513,7 +515,7 @@
             this.button_RightTopExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_RightTopExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_RightTopExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_RightTopExit.Font = new System.Drawing.Font("Ink Free", 15F, System.Drawing.FontStyle.Bold);
+            this.button_RightTopExit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button_RightTopExit.Location = new System.Drawing.Point(0, 0);
             this.button_RightTopExit.Name = "button_RightTopExit";
             this.button_RightTopExit.Size = new System.Drawing.Size(29, 33);
@@ -542,7 +544,7 @@
             // 
             // panel_LeftBottom
             // 
-            this.panel_LeftBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.panel_LeftBottom.BackColor = System.Drawing.Color.Silver;
             this.panel_LeftBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel_LeftBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_LeftBottom.Location = new System.Drawing.Point(0, 480);
@@ -566,6 +568,7 @@
             this.Settings_groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Settings_groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Settings_groupBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Settings_groupBox.ForeColor = System.Drawing.Color.Silver;
             this.Settings_groupBox.Location = new System.Drawing.Point(0, 0);
             this.Settings_groupBox.Name = "Settings_groupBox";
             this.Settings_groupBox.Size = new System.Drawing.Size(130, 44);
@@ -618,8 +621,8 @@
             this.button_MenuLeftUnzipAndDecode.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftUnzipAndDecode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftUnzipAndDecode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_MenuLeftUnzipAndDecode.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.button_MenuLeftUnzipAndDecode.ForeColor = System.Drawing.Color.Black;
+            this.button_MenuLeftUnzipAndDecode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_MenuLeftUnzipAndDecode.ForeColor = System.Drawing.Color.Silver;
             this.button_MenuLeftUnzipAndDecode.Location = new System.Drawing.Point(0, 113);
             this.button_MenuLeftUnzipAndDecode.Name = "button_MenuLeftUnzipAndDecode";
             this.button_MenuLeftUnzipAndDecode.Size = new System.Drawing.Size(130, 30);
@@ -638,8 +641,8 @@
             this.button_MenuLeftSaveFileAs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftSaveFileAs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftSaveFileAs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_MenuLeftSaveFileAs.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.button_MenuLeftSaveFileAs.ForeColor = System.Drawing.Color.Black;
+            this.button_MenuLeftSaveFileAs.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button_MenuLeftSaveFileAs.ForeColor = System.Drawing.Color.Silver;
             this.button_MenuLeftSaveFileAs.Location = new System.Drawing.Point(0, 83);
             this.button_MenuLeftSaveFileAs.Name = "button_MenuLeftSaveFileAs";
             this.button_MenuLeftSaveFileAs.Size = new System.Drawing.Size(130, 30);
@@ -657,8 +660,8 @@
             this.button_MenuLeftSaveFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftSaveFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftSaveFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_MenuLeftSaveFile.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.button_MenuLeftSaveFile.ForeColor = System.Drawing.Color.Black;
+            this.button_MenuLeftSaveFile.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button_MenuLeftSaveFile.ForeColor = System.Drawing.Color.Silver;
             this.button_MenuLeftSaveFile.Location = new System.Drawing.Point(0, 53);
             this.button_MenuLeftSaveFile.Name = "button_MenuLeftSaveFile";
             this.button_MenuLeftSaveFile.Size = new System.Drawing.Size(130, 30);
@@ -680,8 +683,8 @@
             this.button_MenuLeftFileOpen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftFileOpen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_MenuLeftFileOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_MenuLeftFileOpen.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.button_MenuLeftFileOpen.ForeColor = System.Drawing.Color.Black;
+            this.button_MenuLeftFileOpen.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button_MenuLeftFileOpen.ForeColor = System.Drawing.Color.Silver;
             this.button_MenuLeftFileOpen.Location = new System.Drawing.Point(0, 23);
             this.button_MenuLeftFileOpen.Name = "button_MenuLeftFileOpen";
             this.button_MenuLeftFileOpen.Size = new System.Drawing.Size(130, 30);
@@ -701,7 +704,7 @@
             this.label_MenuLeftFile.Dock = System.Windows.Forms.DockStyle.Top;
             this.label_MenuLeftFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label_MenuLeftFile.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.label_MenuLeftFile.ForeColor = System.Drawing.Color.Black;
+            this.label_MenuLeftFile.ForeColor = System.Drawing.Color.Silver;
             this.label_MenuLeftFile.Location = new System.Drawing.Point(0, 0);
             this.label_MenuLeftFile.Name = "label_MenuLeftFile";
             this.label_MenuLeftFile.Size = new System.Drawing.Size(130, 23);
@@ -721,20 +724,21 @@
             // 
             // button_LeftTopAppName
             // 
+            this.button_LeftTopAppName.BackColor = System.Drawing.Color.Silver;
             this.button_LeftTopAppName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_LeftTopAppName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_LeftTopAppName.FlatAppearance.BorderSize = 0;
             this.button_LeftTopAppName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_LeftTopAppName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_LeftTopAppName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_LeftTopAppName.Font = new System.Drawing.Font("Ink Free", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.button_LeftTopAppName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button_LeftTopAppName.Location = new System.Drawing.Point(0, 0);
             this.button_LeftTopAppName.Name = "button_LeftTopAppName";
             this.button_LeftTopAppName.Size = new System.Drawing.Size(130, 33);
             this.button_LeftTopAppName.TabIndex = 0;
             this.button_LeftTopAppName.Text = "KxEditor";
             this.button_LeftTopAppName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_LeftTopAppName.UseVisualStyleBackColor = true;
+            this.button_LeftTopAppName.UseVisualStyleBackColor = false;
             this.button_LeftTopAppName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Button_LeftTopAppName_MouseDown);
             this.button_LeftTopAppName.MouseEnter += new System.EventHandler(this.Button_LeftTopAppName_MouseEnter);
             this.button_LeftTopAppName.MouseLeave += new System.EventHandler(this.Button_LeftTopAppName_MouseLeave);
@@ -781,7 +785,7 @@
             this.button_LeftMenuSmall_Settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.button_LeftMenuSmall_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_LeftMenuSmall_Settings.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.button_LeftMenuSmall_Settings.ForeColor = System.Drawing.Color.Black;
+            this.button_LeftMenuSmall_Settings.ForeColor = System.Drawing.Color.White;
             this.button_LeftMenuSmall_Settings.Location = new System.Drawing.Point(0, 0);
             this.button_LeftMenuSmall_Settings.Name = "button_LeftMenuSmall_Settings";
             this.button_LeftMenuSmall_Settings.Size = new System.Drawing.Size(37, 30);
@@ -791,7 +795,7 @@
             // 
             // panel_LeftOuterEdge
             // 
-            this.panel_LeftOuterEdge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_LeftOuterEdge.BackColor = System.Drawing.Color.Silver;
             this.panel_LeftOuterEdge.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_LeftOuterEdge.Location = new System.Drawing.Point(0, 0);
             this.panel_LeftOuterEdge.Name = "panel_LeftOuterEdge";
@@ -810,6 +814,7 @@
             // 
             // button_TopLeftLogo
             // 
+            this.button_TopLeftLogo.BackColor = System.Drawing.Color.Silver;
             this.button_TopLeftLogo.BackgroundImage = global::KxEditor.Properties.Resources.financial_changes_64px;
             this.button_TopLeftLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button_TopLeftLogo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -817,17 +822,18 @@
             this.button_TopLeftLogo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_TopLeftLogo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_TopLeftLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_TopLeftLogo.Font = new System.Drawing.Font("Ink Free", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_TopLeftLogo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_TopLeftLogo.Location = new System.Drawing.Point(0, 0);
             this.button_TopLeftLogo.Name = "button_TopLeftLogo";
             this.button_TopLeftLogo.Size = new System.Drawing.Size(47, 33);
             this.button_TopLeftLogo.TabIndex = 0;
-            this.button_TopLeftLogo.UseVisualStyleBackColor = true;
+            this.button_TopLeftLogo.Text = "Open";
+            this.button_TopLeftLogo.UseVisualStyleBackColor = false;
             this.button_TopLeftLogo.Click += new System.EventHandler(this.Button_TopLeftLogo_Click);
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel2.Controls.Add(this.panel_LeftBottomOuterEdge);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -838,7 +844,7 @@
             // 
             // panel_LeftBottomOuterEdge
             // 
-            this.panel_LeftBottomOuterEdge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
+            this.panel_LeftBottomOuterEdge.BackColor = System.Drawing.Color.Silver;
             this.panel_LeftBottomOuterEdge.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_LeftBottomOuterEdge.Location = new System.Drawing.Point(0, 0);
             this.panel_LeftBottomOuterEdge.Name = "panel_LeftBottomOuterEdge";
@@ -849,7 +855,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(950, 500);
             this.Controls.Add(this.panel_Main);
             this.DoubleBuffered = true;
@@ -858,6 +864,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KxEditor";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel_Main.ResumeLayout(false);
             this.panel_TextEditCenter.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);

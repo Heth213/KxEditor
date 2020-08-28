@@ -5,24 +5,22 @@ using System.Windows.Forms;
 
 namespace KxEditor
 {
-    public partial class PasswordPromt : Form, IMessageFilter {
+    public partial class datName : Form, IMessageFilter {
 
-        public static PasswordPromt Instance { get; set; }
+        public static datName Instance { get; set; }
         private HashSet<Control> ControlsToMove { get; set; }
         private Rectangle SizeGripRectangle { get; set; }
         public int ResizeHandelSize { get; set; } = 16;
-        public string Password = "";
-
-        public PasswordPromt() {
+        public static string datFileName;
+        public datName() {
             InitializeComponent();
             Instance = this;
             Instance.DoubleBuffered = true;
             Instance.SetStyle(ControlStyles.ResizeRedraw, true);
             Application.AddMessageFilter(Instance);
             ControlsToMove = new HashSet<Control> { Instance, Instance.panel_Top, };
-            this.MinimumSize = new Size(500, 150);
-            this.MaximumSize = new Size(500, 150);
-            button4.Text = Properties.Settings.Default.prevPW;
+            this.MinimumSize = new Size(198, 140);
+            this.MaximumSize = new Size(198, 140);
         }
 
         public bool PreFilterMessage(ref Message message)
@@ -60,19 +58,17 @@ namespace KxEditor
 
 
         private void Button1_Click(object sender, EventArgs e) {
-            Properties.Settings.Default.prevPW = textBox1.Text;
-            Properties.Settings.Default.Save();
-            Password = textBox1.Text;
+            datFileName = textBox2.Text;
             this.DialogResult = DialogResult.OK;
             Close();
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "JKSYEHAB#9052";
+          
         }
         private void Button3_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "EV)O8@BL$3O2E";
+           
         }
         private void Close_Click(object sender, EventArgs e)
         {
@@ -84,19 +80,19 @@ namespace KxEditor
         }
         private void Close_MouseDown(object sender, MouseEventArgs e)
         {
-            //KxSharpLib.Win32.SetControlForeColor(Close, Color.Red);
+            
         }
         private void Close_MouseEnter(object sender, EventArgs e)
         {
-            //KxSharpLib.Win32.SetControlForeColor(Close, Color.GreenYellow);
+          
         }
         private void Close_MouseLeave(object sender, EventArgs e)
         {
-            //KxSharpLib.Win32.SetControlForeColor(Close, Color.Black);
+         
         }
         private void Close_MouseUp(object sender, MouseEventArgs e)
         {
-            //KxSharpLib.Win32.SetControlForeColor(Close, Color.GreenYellow);
+            
         }
         private void Close_MouseMove(object sender, MouseEventArgs e)
         {
@@ -110,7 +106,11 @@ namespace KxEditor
 
         private void button4_Click(object sender, EventArgs e)
         {
-            textBox1.Text = Properties.Settings.Default.prevPW;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
