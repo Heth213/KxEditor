@@ -1,0 +1,15 @@
+#=======================
+#Default Config keys:
+#(2005 - late 2017) = 47
+#(2018+) = 58
+#Default e.pk key: 4
+#=======================
+
+
+{
+	UseConfigurationFile: "false",
+	EncodingKeys: {
+		Config_PK: 47,
+		E_PK: 4
+	}
+}
