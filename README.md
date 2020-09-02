@@ -15,4 +15,4 @@ all encryptions besides the AES encryption they used (2011-2014 (i dont know the
 -Syntax Highlighting <br/>
 -Editor Background Color Options (Light & Dark)<br/>
 -Search function for the .dat files<br/>
--Color indecators for the opened tabs(darker background) and the selected one(Green font).
+-Color indicators for the opened tabs(darker background) and the selected one(Green font).
