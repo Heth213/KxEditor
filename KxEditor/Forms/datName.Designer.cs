@@ -65,9 +65,9 @@ namespace KxEditor
             // 
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(32, 49);
+            this.label1.Location = new System.Drawing.Point(34, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 15);
             this.label1.TabIndex = 0;
@@ -111,7 +111,7 @@ namespace KxEditor
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label3.Location = new System.Drawing.Point(128, 68);
+            this.label3.Location = new System.Drawing.Point(126, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 9;
@@ -146,11 +146,11 @@ namespace KxEditor
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Consolas", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(12, 8);
+            this.label2.Location = new System.Drawing.Point(7, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 18);
+            this.label2.Size = new System.Drawing.Size(156, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Type the file name";
             // 

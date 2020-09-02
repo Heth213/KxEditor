@@ -73,7 +73,7 @@
             this.label_About.Size = new System.Drawing.Size(314, 126);
             this.label_About.TabIndex = 4;
             this.label_About.Text = "KxEditor, a config editor for KalOnline.\r\nCopyright © Darn 2018 ~ 2019 Modified b" +
-    "y Heth";
+    "y Heth 2020";
             this.label_About.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel_BottomCenter
@@ -176,10 +176,10 @@
             // label_AboutCaption
             // 
             this.label_AboutCaption.AutoSize = true;
-            this.label_AboutCaption.Font = new System.Drawing.Font("Ink Free", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_AboutCaption.Location = new System.Drawing.Point(38, 7);
+            this.label_AboutCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label_AboutCaption.Location = new System.Drawing.Point(40, 7);
             this.label_AboutCaption.Name = "label_AboutCaption";
-            this.label_AboutCaption.Size = new System.Drawing.Size(55, 20);
+            this.label_AboutCaption.Size = new System.Drawing.Size(57, 20);
             this.label_AboutCaption.TabIndex = 0;
             this.label_AboutCaption.Text = "About";
             this.label_AboutCaption.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Label_AboutCaption_MouseDown);

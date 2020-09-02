@@ -178,5 +178,10 @@ namespace KxEditor
         {
            
         }
+
+        private void panel_Top_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

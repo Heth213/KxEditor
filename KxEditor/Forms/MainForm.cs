@@ -6,7 +6,8 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Windows.Forms;
 using KxExtension;
-using Microsoft.VisualBasic;
+using FastColoredTextBoxNS;
+using System.Text.RegularExpressions;
 
 namespace KxEditor
 {
@@ -23,6 +24,7 @@ namespace KxEditor
         public KxSharpLib.Utility.Logger logger;
 
         public int treenViewLastSelectedIndex = -1;
+        public int treenViewLastSearchedIndex = -1;
         public ContextMenu treeviewContextMenu;
         public MenuItem treeview_RightClickMenueItem_SaveAs;
         public MenuItem treeview_RightClickMenueItem_SaveAll;
@@ -33,6 +35,7 @@ namespace KxEditor
         public static Rectangle ScreenResolution => Screen.PrimaryScreen.Bounds;
         private int ResizeHandelSize => 16;
         private Rectangle SizeGripRectangle;
+        Style GreenStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
 
         public class Sliding_Panel 
         {
@@ -228,10 +231,17 @@ namespace KxEditor
             if (treeView_PKiew.SelectedNode.Index == -1 || treeView_PKiew.SelectedNode == treeView_PKiew.TopNode)
                 return;
 
-           // if (treenViewLastSelectedIndex != -1)
-            //{
-             //   DATList[treenViewLastSelectedIndex].content = Center_EditorTextBox.Text;
-            //}
+            if (treenViewLastSelectedIndex != -1)
+            {
+                try {
+                    if (tabControl1.SelectedTab.Text != "Default")
+                        DATList[treenViewLastSelectedIndex].content = Center_EditorTextBox.Text;
+                    treeView_PKiew.Nodes[0].Nodes[treenViewLastSelectedIndex].ForeColor = Color.White;
+                }
+                catch
+                { //the node has been deleted
+                    }
+                }
 
             KxSharpLib.Kal.DAT item = DATList[treeView_PKiew.SelectedNode.Index];
 
@@ -239,10 +249,43 @@ namespace KxEditor
             Center_EditorTextBox.Text = item.content;
             Center_EditorTextBox.EndUpdate();
 
+            treeView_PKiew.SelectedNode.ForeColor = Color.FromArgb(11, 110, 79); //green
+            treeView_PKiew.SelectedNode.BackColor = Color.FromArgb(28, 28, 28); //dark gray
+
             treenViewLastSelectedIndex = treeView_PKiew.SelectedNode.Index;
 
+            
             logger.Write(string.Format("[File:({0})] >> [SelectedItem:({1})]", item.name, item.index));
             KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, string.Format("Current File:   [{0}]", item.name));
+
+            //tabs code
+            string title = item.name;
+            foreach (TabPage tb in tabControl1.TabPages)
+            {
+                if (tb.Text == item.name)
+                {
+                    tabControl1.SelectedTab = tb;
+                    return;
+                }
+
+            }
+            TabPage myTabPage = new TabPage(title);
+
+            //the stupidest thing i've done..
+            //changed the tab name to the treeview selected node index so i can convert it to Int later and use it as index LOLOL
+            myTabPage.Name = treeView_PKiew.SelectedNode.Index.ToString();
+
+            tabControl1.TabPages.Add(myTabPage);
+            tabControl1.SelectedTab = myTabPage;
+            if (tabControl1.TabPages[0].Text == "Default" )
+            {
+                tabControl1.TabPages.Remove(tabControl1.TabPages[0]);
+            }
+
+
+            //tabs end
+
+
 
         }
         public void Treeviw_RightClick_SaveAs(object sender, EventArgs e)
@@ -287,7 +330,6 @@ namespace KxEditor
             }
             treeview_RightClickMenu_ClickedNodeIndex = -1;
         }
-
         public void Treeviw_RightClick_Add(object sender, EventArgs e)
         {
             if (treeview_RightClickMenu_ClickedNodeIndex == -1) return;
@@ -296,16 +338,25 @@ namespace KxEditor
             {
 
                 string myNewDatName;
-                datName testDialog = new datName();
-                if (testDialog.ShowDialog(this) == DialogResult.OK)
+                datName fileNameDialog = new datName();
+                if (fileNameDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    myNewDatName = datName.datFileName.Trim()+".dat";
+                    myNewDatName = datName.datFileName.Trim();
                 } else
                 {
-                    testDialog.Dispose();
+                    fileNameDialog.Dispose();
                     return;
                 }
-                testDialog.Dispose();
+
+                fileNameDialog.Dispose();
+
+                if (myNewDatName.Contains(".dat"))
+                {
+                    myNewDatName = myNewDatName.Replace(".dat", "");
+                }
+
+
+                myNewDatName = myNewDatName + ".dat";
                 treeView_PKiew.Nodes[0].Nodes.Add(myNewDatName);
                 List<byte> input = new List<byte>();
                 DATList.Add(new KxSharpLib.Kal.DAT(DATList.Count + 1, myNewDatName, input.ToArray()));
@@ -314,15 +365,22 @@ namespace KxEditor
 
             treeview_RightClickMenu_ClickedNodeIndex = -1;
         }
-
         public void Treeviw_RightClick_Delete(object sender, EventArgs e)
         {
             if (treeview_RightClickMenu_ClickedNodeIndex == -1)
                 return;
-            
+
+            foreach (TabPage tb in tabControl1.TabPages)
+            {
+                if (tb.Name == treeview_RightClickMenu_ClickedNodeIndex.ToString())
+                {
+                    tabControl1.TabPages.Remove(tb);
+                }
+            }
             logger.Write(string.Format("Removed: {0}", treeView_PKiew.SelectedNode.Text));
             treeView_PKiew.Nodes[0].Nodes.RemoveAt(treeview_RightClickMenu_ClickedNodeIndex);
             DATList.RemoveAt(treeview_RightClickMenu_ClickedNodeIndex);
+
             
             treeview_RightClickMenu_ClickedNodeIndex = -1;
         }
@@ -359,17 +417,17 @@ namespace KxEditor
                 KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.E;
                 logger.Write(string.Format("Using CryptTable from 2015 and E.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
             }
-            else if (selectedItem.Contains("2018 Config.pk"))
+            else if (selectedItem.Contains("2018/2019 Config.pk"))
             {
                 KxSharpLib.Security.Kal.Crypto.GUseCrypt = KxSharpLib.Security.Kal.Crypto.EUseCrypt.c2018;
                 KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.CFG + (int)KxSharpLib.Security.Kal.Crypto.EKeys.CFGADD;
-                logger.Write(string.Format("Using CryptTable from 2018 and Config.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
+                logger.Write(string.Format("Using CryptTable from 2018/2019 and Config.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
             }
-            else if (selectedItem.Contains("2018 E.pk"))
+            else if (selectedItem.Contains("2018/2019 E.pk"))
             {
                 KxSharpLib.Security.Kal.Crypto.GUseCrypt = KxSharpLib.Security.Kal.Crypto.EUseCrypt.c2018;
                 KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.E;
-                logger.Write(string.Format("Using CryptTable from 2018 and E.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
+                logger.Write(string.Format("Using CryptTable from 2018/2019 and E.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
             }
             else
             {
@@ -403,7 +461,7 @@ namespace KxEditor
         private void Button_LeftTopAppName_MouseDown(object sender, MouseEventArgs e)
         {
             //KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.Red);
-            button_LeftTopAppName.Font = new Font("Ink Free", 16.0F, FontStyle.Bold | FontStyle.Italic);
+            //button_LeftTopAppName.Font = new Font("Ink Free", 16.0F, FontStyle.Bold | FontStyle.Italic);
         }
         private void Button_LeftTopAppName_MouseEnter(object sender, EventArgs e)
         {
@@ -416,7 +474,7 @@ namespace KxEditor
         private void Button_LeftTopAppName_MouseUp(object sender, MouseEventArgs e)
         {
             //KxSharpLib.Win32.SetControlForeColor(button_LeftTopAppName, Color.GreenYellow);
-            button_LeftTopAppName.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
+           // button_LeftTopAppName.Font = new Font("Ink Free", 15.0F, FontStyle.Bold | FontStyle.Italic);
         }
 
         private void Button_RightBottomCopyright_MouseEnter(object sender, EventArgs e)
@@ -550,12 +608,16 @@ namespace KxEditor
             DialogResult result = KxMsgBox.Show("Exit?", "Do you want to close?", KxMsgBoxIcon.QUESTION, KxMsgBoxButton.YESNO);
             if (result == DialogResult.Yes)
             {
+                Properties.Settings.Default.selectedEBG = EditorBG_comboBox.SelectedIndex;
+                Properties.Settings.Default.selectedSyntax = comboBox1.SelectedIndex;
+                Properties.Settings.Default.Save();
                 Application.Exit();
             }
         }
 
         private void Button_MenuLeftFileOpen_Click(object sender, EventArgs e)
         {
+
             if (Setting_CryptTable_comboBox.SelectedIndex == -1 || KxSharpLib.Security.Kal.Crypto.GUseCrypt == KxSharpLib.Security.Kal.Crypto.EUseCrypt.Unknown)
             {
                 logger.Write("[Unknown CryptTable, Please set a valid table!]");
@@ -564,6 +626,8 @@ namespace KxEditor
 
             if (DATList != null)
             {
+                
+
                 logger.Write("[There is already a file loaded!]");
 
                 DialogResult diaResult = KxMsgBox.Show("Already open!", "There is already a file loaded!\nClose without saving ?", KxMsgBoxIcon.WARNING, KxMsgBoxButton.YESNO);
@@ -571,12 +635,23 @@ namespace KxEditor
                 {
                     case DialogResult.Yes:
                         {
+                            Setting_CryptTable_comboBox.Enabled = true;
                             Center_EditorTextBox.Clear();
                             LoadedPK = new KxSharpLib.Kal.PK();
                             DATList.Clear();
                             DATList = null;
                             treeView_PKiew.Nodes.Clear();
-                            Setting_CryptTable_comboBox.Enabled = true;
+
+                            //tabs code
+                            tabControl1.TabPages.Clear();
+                            TabPage defaultTab = new TabPage("Default");
+                            defaultTab.Name = "Default";
+                            tabControl1.TabPages.Add(defaultTab);
+                            tabControl1.SelectedTab = defaultTab;
+                            tabControl1.TabPages[tabControl1.SelectedIndex].Controls.Add(Center_EditorTextBox);
+                            //tabs end
+
+                            
                             KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, "Current File:   [None]");
                             break;
                         }
@@ -603,6 +678,7 @@ namespace KxEditor
                             Setting_CryptTable_comboBox.Enabled = false;
                             textBox_FileInfo_Name.Text = Path.GetFileName(filedia.FileName);
                             textBox_FileInfo_Path.Text = filedia.FileName;
+
                             using (var md5 = MD5.Create())
                             {
                                 textBox_FileInfo_MD5.Text = BitConverter.ToString(md5.ComputeHash(File.ReadAllBytes(filedia.FileName))).Replace("-", "").ToLower();
@@ -632,11 +708,190 @@ namespace KxEditor
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            EditorBG_comboBox.SelectedIndex = Properties.Settings.Default.selectedEBG;
+            comboBox1.SelectedIndex = Properties.Settings.Default.selectedSyntax;
+
             slidingPanel.Start();
         }
 
         private void panel_RightTopExit_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void Center_EditorTextBox_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (treeView_PKiew.Nodes.Count == 0) return;
+
+            //im using the stupidest thing 
+            int selectedTabIndex = Int32.Parse(tabControl1.SelectedTab.Name);
+
+            TreeNode selectedNode = treeView_PKiew.Nodes[0].Nodes[selectedTabIndex];
+      
+            if (selectedNode == null)
+                return;
+
+            if (selectedNode.Index == -1 || selectedNode == treeView_PKiew.TopNode)
+                return;
+
+            if (treenViewLastSelectedIndex != -1)
+            {
+                try
+                {
+                    if (tabControl1.SelectedTab.Text != "Default")
+                        DATList[treenViewLastSelectedIndex].content = Center_EditorTextBox.Text;
+                    treeView_PKiew.Nodes[0].Nodes[treenViewLastSelectedIndex].ForeColor = Color.White;
+                }
+                catch { //the node has been deleted
+                }
+            }
+
+            treeView_PKiew.SelectedNode = selectedNode;
+            KxSharpLib.Kal.DAT item = DATList[selectedNode.Index];
+
+                Center_EditorTextBox.BeginUpdate();
+                Center_EditorTextBox.Text = item.content;
+                Center_EditorTextBox.EndUpdate();
+            
+            treenViewLastSelectedIndex = selectedTabIndex;
+
+            tabControl1.TabPages[tabControl1.SelectedIndex].Controls.Add(Center_EditorTextBox);
+
+            selectedNode.ForeColor = Color.FromArgb(11, 110, 79); //green
+            selectedNode.BackColor = Color.FromArgb(28, 28, 28); //dark gray
+            logger.Write(string.Format("[Tab Selected:({0})", item.name));
+            KxSharpLib.FormHelper.SetLabelText(label_CurrentFileTopCenter, string.Format("Current File:   [{0}]", item.name));
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Text != "Default") {
+                
+                if (tabControl1.TabPages.Count != 1) {
+
+                    //the last time im using it.
+                    int selectedTabIndex = Int32.Parse(tabControl1.SelectedTab.Name);
+
+                    tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+                    treeView_PKiew.Nodes[0].Nodes[selectedTabIndex].BackColor = Color.FromArgb(45, 45, 48); // back to normal background
+                    logger.Write(string.Format("[Tab Closed:({0})", tabControl1.SelectedTab.Text));
+                }
+
+            }
+        }
+
+        private void Center_EditorTextBox_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Center_EditorTextBox_TextChangedDelayed(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
+        {
+
+        }
+        
+        private void Center_EditorTextBox_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
+        {
+            //comment green highlighting
+            e.ChangedRange.ClearStyle(GreenStyle);
+            e.ChangedRange.SetStyle(GreenStyle, @";.*$", RegexOptions.Multiline);
+        }
+
+        private void Setting_CryptTable_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == -1)
+                return;
+
+            var selectedSyntax = comboBox1.SelectedItem.ToString();
+            if (selectedSyntax.Contains("None"))
+            {
+                Center_EditorTextBox.Language = FastColoredTextBoxNS.Language.Custom;
+            }
+            else if (selectedSyntax.Contains("Highlight"))
+            {
+                Center_EditorTextBox.Language = FastColoredTextBoxNS.Language.JS;
+            }
+            
+
+
+        }
+
+        private void EditorBG_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EditorBG_comboBox.SelectedIndex == -1)
+                return;
+
+            var selectedSyntax = EditorBG_comboBox.SelectedItem.ToString();
+            if (selectedSyntax.Contains("Light"))
+            {
+                Center_EditorTextBox.BackColor = Color.Gainsboro;
+                Center_EditorTextBox.ForeColor = Color.Black;
+                Center_EditorTextBox.CaretColor = Color.Black;
+            }
+            else if (selectedSyntax.Contains("Dark"))
+            {
+                Center_EditorTextBox.BackColor = Color.FromArgb(28, 28, 28);
+                Center_EditorTextBox.ForeColor = Color.Silver;
+                Center_EditorTextBox.CaretColor = Color.White;
+            }
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text == "Search")
+                textBox1.Text = "";
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.IndianRed;
+            if (textBox1.Text.Trim() != "")
+            {
+                if (treeView_PKiew.Nodes.Count > 0)
+                {
+                    if(treenViewLastSearchedIndex != -1) {
+                        try { 
+                    treeView_PKiew.Nodes[0].Nodes[treenViewLastSearchedIndex].BackColor = Color.FromArgb(45, 45, 48); // normal bg
+                        }
+                        catch { //the node has been deleted
+                        }
+                    }
+
+                    foreach (TreeNode tn in treeView_PKiew.Nodes[0].Nodes)
+                    {
+                        if (tn.Text.ToUpper().Contains(textBox1.Text.Trim().ToUpper().ToString()))
+                        {
+ 
+                            treeView_PKiew.SelectedNode = tn;
+                            tn.BackColor = Color.FromArgb(255, 124, 84); // yellow
+                            textBox1.ForeColor = Color.LightGreen;
+                            treenViewLastSearchedIndex = tn.Index;
+                            break;
+                        }
+   
+                    }
+
+                }
+            }
+                
+
+  
+
+
+
+            
 
         }
     }

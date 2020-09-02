@@ -21,15 +21,19 @@
             this.panel_TextEditCenter = new System.Windows.Forms.Panel();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.panel_CenterEditorTextBox = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Center_EditorTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
             this.panel_CenterLoggingTextBox = new System.Windows.Forms.Panel();
             this.Center_LoggingTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
             this.panel_CenterBottom = new System.Windows.Forms.Panel();
             this.panel_CenterTop = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label_CurrentFileTopCenter = new System.Windows.Forms.Label();
             this.panel_TreeViewRight = new System.Windows.Forms.Panel();
             this.treeView_PKiew = new System.Windows.Forms.TreeView();
             this.panel_Right_FileInfo = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox_Right_FileInfo = new System.Windows.Forms.GroupBox();
             this.textBox_FileInfo_MD5 = new System.Windows.Forms.TextBox();
             this.textBox_FileInfo_Path = new System.Windows.Forms.TextBox();
@@ -45,6 +49,10 @@
             this.panel_RightTopExit2 = new System.Windows.Forms.Panel();
             this.button_RightTopExit = new System.Windows.Forms.Button();
             this.panel_MenuLeft = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.EditorBG_comboBox = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel_LeftBottom = new System.Windows.Forms.Panel();
             this.panel_MenuLeft_Infos = new System.Windows.Forms.Panel();
             this.Settings_groupBox = new System.Windows.Forms.GroupBox();
@@ -70,6 +78,8 @@
             this.panel_TextEditCenter.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.panel_CenterEditorTextBox.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Center_EditorTextBox)).BeginInit();
             this.panel_CenterLoggingTextBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Center_LoggingTextBox)).BeginInit();
@@ -81,6 +91,8 @@
             this.panel_RightTopExit.SuspendLayout();
             this.panel_RightTopExit2.SuspendLayout();
             this.panel_MenuLeft.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel_MenuLeft_Infos.SuspendLayout();
             this.Settings_groupBox.SuspendLayout();
             this.panel_MenuLeft_File.SuspendLayout();
@@ -128,16 +140,42 @@
             // 
             // panel_CenterEditorTextBox
             // 
-            this.panel_CenterEditorTextBox.Controls.Add(this.Center_EditorTextBox);
+            this.panel_CenterEditorTextBox.Controls.Add(this.tabControl1);
             this.panel_CenterEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_CenterEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.panel_CenterEditorTextBox.Name = "panel_CenterEditorTextBox";
             this.panel_CenterEditorTextBox.Size = new System.Drawing.Size(576, 333);
             this.panel_CenterEditorTextBox.TabIndex = 2;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(10, 3);
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(576, 333);
+            this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.Center_EditorTextBox);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(568, 305);
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "Default";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // Center_EditorTextBox
             // 
             this.Center_EditorTextBox.AllowMacroRecording = false;
+            this.Center_EditorTextBox.AutoCompleteBrackets = true;
             this.Center_EditorTextBox.AutoCompleteBracketsList = new char[] {
         '(',
         ')',
@@ -151,34 +189,47 @@
         '\''};
             this.Center_EditorTextBox.AutoIndent = false;
             this.Center_EditorTextBox.AutoIndentChars = false;
+            this.Center_EditorTextBox.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
             this.Center_EditorTextBox.AutoIndentExistingLines = false;
-            this.Center_EditorTextBox.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.Center_EditorTextBox.AutoScrollMinSize = new System.Drawing.Size(25, 15);
             this.Center_EditorTextBox.BackBrush = null;
-            this.Center_EditorTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.Center_EditorTextBox.BackColor = System.Drawing.Color.Gainsboro;
             this.Center_EditorTextBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Center_EditorTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Center_EditorTextBox.CaretColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
-            this.Center_EditorTextBox.CharHeight = 14;
-            this.Center_EditorTextBox.CharWidth = 8;
+            this.Center_EditorTextBox.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
+            this.Center_EditorTextBox.CaretBlinking = false;
+            this.Center_EditorTextBox.CharHeight = 15;
+            this.Center_EditorTextBox.CharWidth = 7;
+            this.Center_EditorTextBox.CurrentLineColor = System.Drawing.Color.Black;
             this.Center_EditorTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Center_EditorTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.Center_EditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Center_EditorTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.Center_EditorTextBox.FoldingIndicatorColor = System.Drawing.SystemColors.Highlight;
+            this.Center_EditorTextBox.Font = new System.Drawing.Font("Consolas", 9.75F);
+            this.Center_EditorTextBox.ForeColor = System.Drawing.Color.Black;
             this.Center_EditorTextBox.HighlightFoldingIndicator = false;
             this.Center_EditorTextBox.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.Center_EditorTextBox.IsReplaceMode = false;
+            this.Center_EditorTextBox.Language = FastColoredTextBoxNS.Language.JS;
+            this.Center_EditorTextBox.LeftBracket = '(';
+            this.Center_EditorTextBox.LeftBracket2 = '{';
             this.Center_EditorTextBox.LineNumberColor = System.Drawing.Color.DarkGray;
-            this.Center_EditorTextBox.Location = new System.Drawing.Point(0, 0);
+            this.Center_EditorTextBox.Location = new System.Drawing.Point(3, 3);
             this.Center_EditorTextBox.Name = "Center_EditorTextBox";
             this.Center_EditorTextBox.Paddings = new System.Windows.Forms.Padding(0);
-            this.Center_EditorTextBox.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Center_EditorTextBox.RightBracket = ')';
+            this.Center_EditorTextBox.RightBracket2 = '}';
+            this.Center_EditorTextBox.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.Center_EditorTextBox.SelectionHighlightingForLineBreaksEnabled = false;
             this.Center_EditorTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("Center_EditorTextBox.ServiceColors")));
             this.Center_EditorTextBox.ServiceLinesColor = System.Drawing.Color.DimGray;
-            this.Center_EditorTextBox.Size = new System.Drawing.Size(576, 333);
-            this.Center_EditorTextBox.TabIndex = 0;
+            this.Center_EditorTextBox.Size = new System.Drawing.Size(562, 299);
+            this.Center_EditorTextBox.TabIndex = 1;
             this.Center_EditorTextBox.WordWrapAutoIndent = false;
             this.Center_EditorTextBox.Zoom = 100;
+            this.Center_EditorTextBox.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.Center_EditorTextBox_TextChanged);
+            this.Center_EditorTextBox.TextChangedDelayed += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.Center_EditorTextBox_TextChangedDelayed);
+            this.Center_EditorTextBox.Load += new System.EventHandler(this.Center_EditorTextBox_Load_1);
             // 
             // panel_CenterLoggingTextBox
             // 
@@ -206,7 +257,7 @@
             this.Center_LoggingTextBox.AutoIndent = false;
             this.Center_LoggingTextBox.AutoIndentChars = false;
             this.Center_LoggingTextBox.AutoIndentExistingLines = false;
-            this.Center_LoggingTextBox.AutoScrollMinSize = new System.Drawing.Size(17, 14);
+            this.Center_LoggingTextBox.AutoScrollMinSize = new System.Drawing.Size(17, 15);
             this.Center_LoggingTextBox.BackBrush = null;
             this.Center_LoggingTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.Center_LoggingTextBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -214,17 +265,18 @@
             this.Center_LoggingTextBox.CaretBlinking = false;
             this.Center_LoggingTextBox.CaretColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.Center_LoggingTextBox.CaretVisible = false;
-            this.Center_LoggingTextBox.CharHeight = 14;
-            this.Center_LoggingTextBox.CharWidth = 8;
+            this.Center_LoggingTextBox.CharHeight = 15;
+            this.Center_LoggingTextBox.CharWidth = 7;
             this.Center_LoggingTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Center_LoggingTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.Center_LoggingTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Center_LoggingTextBox.Font = new System.Drawing.Font("Consolas", 9.75F);
             this.Center_LoggingTextBox.ForeColor = System.Drawing.Color.LightGray;
             this.Center_LoggingTextBox.HighlightFoldingIndicator = false;
             this.Center_LoggingTextBox.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.Center_LoggingTextBox.IsReplaceMode = false;
             this.Center_LoggingTextBox.LineNumberColor = System.Drawing.Color.DarkGray;
-            this.Center_LoggingTextBox.Location = new System.Drawing.Point(0, 0);
+            this.Center_LoggingTextBox.Location = new System.Drawing.Point(0, 3);
             this.Center_LoggingTextBox.Name = "Center_LoggingTextBox";
             this.Center_LoggingTextBox.Paddings = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.Center_LoggingTextBox.ReadOnly = true;
@@ -234,7 +286,7 @@
             this.Center_LoggingTextBox.ServiceLinesColor = System.Drawing.Color.DimGray;
             this.Center_LoggingTextBox.ShowLineNumbers = false;
             this.Center_LoggingTextBox.ShowScrollBars = false;
-            this.Center_LoggingTextBox.Size = new System.Drawing.Size(576, 114);
+            this.Center_LoggingTextBox.Size = new System.Drawing.Size(576, 111);
             this.Center_LoggingTextBox.TabIndex = 1;
             this.Center_LoggingTextBox.WordWrapAutoIndent = false;
             this.Center_LoggingTextBox.Zoom = 100;
@@ -253,6 +305,7 @@
             // 
             this.panel_CenterTop.BackColor = System.Drawing.Color.Silver;
             this.panel_CenterTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_CenterTop.Controls.Add(this.button1);
             this.panel_CenterTop.Controls.Add(this.label_CurrentFileTopCenter);
             this.panel_CenterTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_CenterTop.Location = new System.Drawing.Point(0, 0);
@@ -261,13 +314,27 @@
             this.panel_CenterTop.TabIndex = 0;
             this.panel_CenterTop.DoubleClick += new System.EventHandler(this.Panel_CenterTop_DoubleClick);
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Maroon;
+            this.button1.Location = new System.Drawing.Point(474, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 33);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Close Current Tab";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label_CurrentFileTopCenter
             // 
             this.label_CurrentFileTopCenter.AutoSize = true;
-            this.label_CurrentFileTopCenter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label_CurrentFileTopCenter.Location = new System.Drawing.Point(6, 10);
+            this.label_CurrentFileTopCenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label_CurrentFileTopCenter.Location = new System.Drawing.Point(6, 6);
             this.label_CurrentFileTopCenter.Name = "label_CurrentFileTopCenter";
-            this.label_CurrentFileTopCenter.Size = new System.Drawing.Size(183, 19);
+            this.label_CurrentFileTopCenter.Size = new System.Drawing.Size(195, 20);
             this.label_CurrentFileTopCenter.TabIndex = 0;
             this.label_CurrentFileTopCenter.Text = "Current File:       [None]";
             this.label_CurrentFileTopCenter.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -303,6 +370,7 @@
             // panel_Right_FileInfo
             // 
             this.panel_Right_FileInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_Right_FileInfo.Controls.Add(this.textBox1);
             this.panel_Right_FileInfo.Controls.Add(this.groupBox_Right_FileInfo);
             this.panel_Right_FileInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_Right_FileInfo.Location = new System.Drawing.Point(0, 366);
@@ -310,11 +378,23 @@
             this.panel_Right_FileInfo.Size = new System.Drawing.Size(197, 114);
             this.panel_Right_FileInfo.TabIndex = 4;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.ForeColor = System.Drawing.Color.Silver;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(197, 20);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "Search";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // groupBox_Right_FileInfo
             // 
-            this.groupBox_Right_FileInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_Right_FileInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBox_Right_FileInfo.Controls.Add(this.textBox_FileInfo_MD5);
             this.groupBox_Right_FileInfo.Controls.Add(this.textBox_FileInfo_Path);
@@ -322,12 +402,13 @@
             this.groupBox_Right_FileInfo.Controls.Add(this.label_FileInfo_TitleMD5);
             this.groupBox_Right_FileInfo.Controls.Add(this.label_FileInfo_TitlePath);
             this.groupBox_Right_FileInfo.Controls.Add(this.label_FileInfo_TitleName);
+            this.groupBox_Right_FileInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox_Right_FileInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox_Right_FileInfo.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Right_FileInfo.ForeColor = System.Drawing.Color.Silver;
-            this.groupBox_Right_FileInfo.Location = new System.Drawing.Point(6, 6);
+            this.groupBox_Right_FileInfo.Location = new System.Drawing.Point(0, 21);
             this.groupBox_Right_FileInfo.Name = "groupBox_Right_FileInfo";
-            this.groupBox_Right_FileInfo.Size = new System.Drawing.Size(186, 102);
+            this.groupBox_Right_FileInfo.Size = new System.Drawing.Size(197, 93);
             this.groupBox_Right_FileInfo.TabIndex = 1;
             this.groupBox_Right_FileInfo.TabStop = false;
             this.groupBox_Right_FileInfo.Text = "Loaded File Info";
@@ -342,7 +423,7 @@
             this.textBox_FileInfo_MD5.Location = new System.Drawing.Point(54, 67);
             this.textBox_FileInfo_MD5.Name = "textBox_FileInfo_MD5";
             this.textBox_FileInfo_MD5.ReadOnly = true;
-            this.textBox_FileInfo_MD5.Size = new System.Drawing.Size(125, 15);
+            this.textBox_FileInfo_MD5.Size = new System.Drawing.Size(136, 15);
             this.textBox_FileInfo_MD5.TabIndex = 6;
             // 
             // textBox_FileInfo_Path
@@ -355,7 +436,7 @@
             this.textBox_FileInfo_Path.Location = new System.Drawing.Point(54, 43);
             this.textBox_FileInfo_Path.Name = "textBox_FileInfo_Path";
             this.textBox_FileInfo_Path.ReadOnly = true;
-            this.textBox_FileInfo_Path.Size = new System.Drawing.Size(125, 15);
+            this.textBox_FileInfo_Path.Size = new System.Drawing.Size(136, 15);
             this.textBox_FileInfo_Path.TabIndex = 5;
             // 
             // textBox_FileInfo_Name
@@ -368,7 +449,7 @@
             this.textBox_FileInfo_Name.Location = new System.Drawing.Point(54, 18);
             this.textBox_FileInfo_Name.Name = "textBox_FileInfo_Name";
             this.textBox_FileInfo_Name.ReadOnly = true;
-            this.textBox_FileInfo_Name.Size = new System.Drawing.Size(125, 15);
+            this.textBox_FileInfo_Name.Size = new System.Drawing.Size(136, 15);
             this.textBox_FileInfo_Name.TabIndex = 4;
             // 
             // label_FileInfo_TitleMD5
@@ -516,6 +597,7 @@
             this.button_RightTopExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_RightTopExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_RightTopExit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button_RightTopExit.ForeColor = System.Drawing.Color.Maroon;
             this.button_RightTopExit.Location = new System.Drawing.Point(0, 0);
             this.button_RightTopExit.Name = "button_RightTopExit";
             this.button_RightTopExit.Size = new System.Drawing.Size(29, 33);
@@ -532,6 +614,8 @@
             // 
             this.panel_MenuLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.panel_MenuLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_MenuLeft.Controls.Add(this.groupBox2);
+            this.panel_MenuLeft.Controls.Add(this.groupBox1);
             this.panel_MenuLeft.Controls.Add(this.panel_LeftBottom);
             this.panel_MenuLeft.Controls.Add(this.panel_MenuLeft_Infos);
             this.panel_MenuLeft.Controls.Add(this.panel_MenuLeft_File);
@@ -541,6 +625,72 @@
             this.panel_MenuLeft.Name = "panel_MenuLeft";
             this.panel_MenuLeft.Size = new System.Drawing.Size(130, 500);
             this.panel_MenuLeft.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.EditorBG_comboBox);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Silver;
+            this.groupBox2.Location = new System.Drawing.Point(0, 278);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(130, 58);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Editor Background";
+            // 
+            // EditorBG_comboBox
+            // 
+            this.EditorBG_comboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.EditorBG_comboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.EditorBG_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EditorBG_comboBox.DropDownWidth = 140;
+            this.EditorBG_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditorBG_comboBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditorBG_comboBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.EditorBG_comboBox.FormattingEnabled = true;
+            this.EditorBG_comboBox.Items.AddRange(new object[] {
+            "Light",
+            "Dark"});
+            this.EditorBG_comboBox.Location = new System.Drawing.Point(3, 33);
+            this.EditorBG_comboBox.Name = "EditorBG_comboBox";
+            this.EditorBG_comboBox.Size = new System.Drawing.Size(124, 22);
+            this.EditorBG_comboBox.TabIndex = 0;
+            this.EditorBG_comboBox.SelectedIndexChanged += new System.EventHandler(this.EditorBG_comboBox_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Silver;
+            this.groupBox1.Location = new System.Drawing.Point(0, 220);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(130, 58);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Syntax Highlighting";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.DropDownWidth = 140;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "None",
+            "Highlight"});
+            this.comboBox1.Location = new System.Drawing.Point(3, 33);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(124, 22);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // panel_LeftBottom
             // 
@@ -581,8 +731,9 @@
             this.Setting_CryptTable_comboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.Setting_CryptTable_comboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Setting_CryptTable_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Setting_CryptTable_comboBox.DropDownWidth = 140;
             this.Setting_CryptTable_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Setting_CryptTable_comboBox.Font = new System.Drawing.Font("Consolas", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Setting_CryptTable_comboBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Setting_CryptTable_comboBox.ForeColor = System.Drawing.SystemColors.GrayText;
             this.Setting_CryptTable_comboBox.FormattingEnabled = true;
             this.Setting_CryptTable_comboBox.Items.AddRange(new object[] {
@@ -590,12 +741,13 @@
             "2006 E.pk",
             "2015 Config.pk",
             "2015 E.pk",
-            "2018 Config.pk",
-            "2018 E.pk"});
+            "2018/2019 Config.pk",
+            "2018/2019 E.pk"});
             this.Setting_CryptTable_comboBox.Location = new System.Drawing.Point(3, 19);
             this.Setting_CryptTable_comboBox.Name = "Setting_CryptTable_comboBox";
             this.Setting_CryptTable_comboBox.Size = new System.Drawing.Size(124, 22);
             this.Setting_CryptTable_comboBox.TabIndex = 0;
+            this.Setting_CryptTable_comboBox.SelectedIndexChanged += new System.EventHandler(this.Setting_CryptTable_comboBox_SelectedIndexChanged);
             this.Setting_CryptTable_comboBox.DropDownClosed += new System.EventHandler(this.Setting_CryptTable_comboBox_DropDownClosed);
             // 
             // panel_MenuLeft_File
@@ -731,7 +883,7 @@
             this.button_LeftTopAppName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_LeftTopAppName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(90)))), ((int)(((byte)(41)))));
             this.button_LeftTopAppName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_LeftTopAppName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button_LeftTopAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button_LeftTopAppName.Location = new System.Drawing.Point(0, 0);
             this.button_LeftTopAppName.Name = "button_LeftTopAppName";
             this.button_LeftTopAppName.Size = new System.Drawing.Size(130, 33);
@@ -869,6 +1021,8 @@
             this.panel_TextEditCenter.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.panel_CenterEditorTextBox.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Center_EditorTextBox)).EndInit();
             this.panel_CenterLoggingTextBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Center_LoggingTextBox)).EndInit();
@@ -876,6 +1030,7 @@
             this.panel_CenterTop.PerformLayout();
             this.panel_TreeViewRight.ResumeLayout(false);
             this.panel_Right_FileInfo.ResumeLayout(false);
+            this.panel_Right_FileInfo.PerformLayout();
             this.groupBox_Right_FileInfo.ResumeLayout(false);
             this.groupBox_Right_FileInfo.PerformLayout();
             this.panel_RightBottom.ResumeLayout(false);
@@ -883,6 +1038,8 @@
             this.panel_RightTopExit2.ResumeLayout(false);
             this.panel_MenuLeft.ResumeLayout(false);
             this.panel_MenuLeft.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.panel_MenuLeft_Infos.ResumeLayout(false);
             this.Settings_groupBox.ResumeLayout(false);
             this.panel_MenuLeft_File.ResumeLayout(false);
@@ -934,7 +1091,6 @@
         private System.Windows.Forms.TextBox textBox_FileInfo_Name;
         private System.Windows.Forms.TextBox textBox_FileInfo_MD5;
         private System.Windows.Forms.TextBox textBox_FileInfo_Path;
-        public FastColoredTextBoxNS.FastColoredTextBox Center_EditorTextBox;
         public FastColoredTextBoxNS.FastColoredTextBox Center_LoggingTextBox;
         private System.Windows.Forms.Panel panel_CenterLoggingTextBox;
         private System.Windows.Forms.Panel panel_CenterEditorTextBox;
@@ -947,6 +1103,15 @@
         private System.Windows.Forms.Panel panel_LeftBottomOuterEdge;
         private System.Windows.Forms.Panel panel_LeftMenuSmall;
         public System.Windows.Forms.Button button_LeftMenuSmall_Settings;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        public FastColoredTextBoxNS.FastColoredTextBox Center_EditorTextBox;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.ComboBox EditorBG_comboBox;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

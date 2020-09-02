@@ -162,6 +162,7 @@
             this.panel_Top.Name = "panel_Top";
             this.panel_Top.Size = new System.Drawing.Size(485, 33);
             this.panel_Top.TabIndex = 0;
+            this.panel_Top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Top_Paint);
             // 
             // button_TopExit
             // 
@@ -187,10 +188,10 @@
             // 
             this.label_TopCaption.AutoSize = true;
             this.label_TopCaption.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_TopCaption.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_TopCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label_TopCaption.Location = new System.Drawing.Point(42, 6);
             this.label_TopCaption.Name = "label_TopCaption";
-            this.label_TopCaption.Size = new System.Drawing.Size(82, 22);
+            this.label_TopCaption.Size = new System.Drawing.Size(71, 20);
             this.label_TopCaption.TabIndex = 1;
             this.label_TopCaption.Text = "Caption";
             this.label_TopCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
