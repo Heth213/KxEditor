@@ -8,12 +8,12 @@ namespace KxEditor
         [STAThread]
         static void Main()
         {
-            using (new KxSharpLib.Utility.SingleInstanceMutex(1000))
-            {
-                Application.EnableVisualStyles();
+            //using (new KxSharpLib.Utility.SingleInstanceMutex(1000))
+            //{
+               Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainForm());
-            }
+            //}
         }
     }
 }
