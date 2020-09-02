@@ -3,7 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="prevPW" Type="System.String" Scope="User">
-      <Value Profile="(Default)">password</Value>
+      <Value Profile="(Default)">Previous PW</Value>
+    </Setting>
+    <Setting Name="selectedSyntax" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="selectedEBG" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

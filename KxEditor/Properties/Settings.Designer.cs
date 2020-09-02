@@ -25,13 +25,37 @@ namespace KxEditor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("password")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Previous PW")]
         public string prevPW {
             get {
                 return ((string)(this["prevPW"]));
             }
             set {
                 this["prevPW"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int selectedSyntax {
+            get {
+                return ((int)(this["selectedSyntax"]));
+            }
+            set {
+                this["selectedSyntax"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int selectedEBG {
+            get {
+                return ((int)(this["selectedEBG"]));
+            }
+            set {
+                this["selectedEBG"] = value;
             }
         }
     }
