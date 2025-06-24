@@ -1,7 +1,7 @@
 /*
  * Based on the work of Peter S. Stevens, The Phantom. 
  * 
- * Copyright (c) 2007, Claus J. Jørgensen, TheDeathArt. All rights reserved.
+ * Copyright (c) 2007, Claus J. Jï¿½rgensen, TheDeathArt. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -113,7 +113,7 @@ namespace KxEditor
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 23);
             this.button2.TabIndex = 4;
-            this.button2.Text = "JKSYEHAB#9052";
+            this.button2.Text = "5HwyFCjVIbahPH47hMFfkip7SvJj6s";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 

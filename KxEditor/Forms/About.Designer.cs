@@ -72,8 +72,8 @@
             this.label_About.Name = "label_About";
             this.label_About.Size = new System.Drawing.Size(314, 126);
             this.label_About.TabIndex = 4;
-            this.label_About.Text = "KxEditor, a config editor for KalOnline.\r\nCopyright © Darn 2018 ~ 2019 Modified b" +
-    "y Heth 2020";
+            this.label_About.Text = "KxEditor, a config editor for KalOnline.\r\nCopyright © Darn 2018 ~ 2019 Updated by" +
+    " Heth 2025";
             this.label_About.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel_BottomCenter

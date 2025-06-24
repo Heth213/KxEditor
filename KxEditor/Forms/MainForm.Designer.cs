@@ -49,6 +49,8 @@
             this.panel_RightTopExit2 = new System.Windows.Forms.Panel();
             this.button_RightTopExit = new System.Windows.Forms.Button();
             this.panel_MenuLeft = new System.Windows.Forms.Panel();
+            this.changePW_TXTBOX = new System.Windows.Forms.TextBox();
+            this.changePW_BTN = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.EditorBG_comboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -65,15 +67,11 @@
             this.label_MenuLeftFile = new System.Windows.Forms.Label();
             this.panel_LeftTopAppName = new System.Windows.Forms.Panel();
             this.button_LeftTopAppName = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_MenuLeft_Small = new System.Windows.Forms.Panel();
-            this.panel_LeftMenuSmall = new System.Windows.Forms.Panel();
-            this.button_LeftMenuSmall_Settings = new System.Windows.Forms.Button();
-            this.panel_LeftOuterEdge = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button_TopLeftLogo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_LeftBottomOuterEdge = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button_TopLeftLogo = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel_Main.SuspendLayout();
             this.panel_TextEditCenter.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -97,11 +95,9 @@
             this.Settings_groupBox.SuspendLayout();
             this.panel_MenuLeft_File.SuspendLayout();
             this.panel_LeftTopAppName.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel_MenuLeft_Small.SuspendLayout();
-            this.panel_LeftMenuSmall.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_Main
@@ -122,9 +118,9 @@
             this.panel_TextEditCenter.Controls.Add(this.panel_CenterBottom);
             this.panel_TextEditCenter.Controls.Add(this.panel_CenterTop);
             this.panel_TextEditCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_TextEditCenter.Location = new System.Drawing.Point(177, 0);
+            this.panel_TextEditCenter.Location = new System.Drawing.Point(140, 0);
             this.panel_TextEditCenter.Name = "panel_TextEditCenter";
-            this.panel_TextEditCenter.Size = new System.Drawing.Size(576, 500);
+            this.panel_TextEditCenter.Size = new System.Drawing.Size(613, 500);
             this.panel_TextEditCenter.TabIndex = 2;
             // 
             // MainPanel
@@ -135,7 +131,7 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 33);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(576, 447);
+            this.MainPanel.Size = new System.Drawing.Size(613, 447);
             this.MainPanel.TabIndex = 4;
             // 
             // panel_CenterEditorTextBox
@@ -144,7 +140,7 @@
             this.panel_CenterEditorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_CenterEditorTextBox.Location = new System.Drawing.Point(0, 0);
             this.panel_CenterEditorTextBox.Name = "panel_CenterEditorTextBox";
-            this.panel_CenterEditorTextBox.Size = new System.Drawing.Size(576, 333);
+            this.panel_CenterEditorTextBox.Size = new System.Drawing.Size(613, 333);
             this.panel_CenterEditorTextBox.TabIndex = 2;
             // 
             // tabControl1
@@ -157,7 +153,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(10, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(576, 333);
+            this.tabControl1.Size = new System.Drawing.Size(613, 333);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -167,7 +163,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(568, 305);
+            this.tabPage1.Size = new System.Drawing.Size(605, 305);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Default";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -223,7 +219,7 @@
             this.Center_EditorTextBox.SelectionHighlightingForLineBreaksEnabled = false;
             this.Center_EditorTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("Center_EditorTextBox.ServiceColors")));
             this.Center_EditorTextBox.ServiceLinesColor = System.Drawing.Color.DimGray;
-            this.Center_EditorTextBox.Size = new System.Drawing.Size(562, 299);
+            this.Center_EditorTextBox.Size = new System.Drawing.Size(599, 299);
             this.Center_EditorTextBox.TabIndex = 1;
             this.Center_EditorTextBox.WordWrapAutoIndent = false;
             this.Center_EditorTextBox.Zoom = 100;
@@ -237,7 +233,7 @@
             this.panel_CenterLoggingTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_CenterLoggingTextBox.Location = new System.Drawing.Point(0, 333);
             this.panel_CenterLoggingTextBox.Name = "panel_CenterLoggingTextBox";
-            this.panel_CenterLoggingTextBox.Size = new System.Drawing.Size(576, 114);
+            this.panel_CenterLoggingTextBox.Size = new System.Drawing.Size(613, 114);
             this.panel_CenterLoggingTextBox.TabIndex = 3;
             // 
             // Center_LoggingTextBox
@@ -286,7 +282,7 @@
             this.Center_LoggingTextBox.ServiceLinesColor = System.Drawing.Color.DimGray;
             this.Center_LoggingTextBox.ShowLineNumbers = false;
             this.Center_LoggingTextBox.ShowScrollBars = false;
-            this.Center_LoggingTextBox.Size = new System.Drawing.Size(576, 111);
+            this.Center_LoggingTextBox.Size = new System.Drawing.Size(613, 111);
             this.Center_LoggingTextBox.TabIndex = 1;
             this.Center_LoggingTextBox.WordWrapAutoIndent = false;
             this.Center_LoggingTextBox.Zoom = 100;
@@ -298,7 +294,7 @@
             this.panel_CenterBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_CenterBottom.Location = new System.Drawing.Point(0, 480);
             this.panel_CenterBottom.Name = "panel_CenterBottom";
-            this.panel_CenterBottom.Size = new System.Drawing.Size(576, 20);
+            this.panel_CenterBottom.Size = new System.Drawing.Size(613, 20);
             this.panel_CenterBottom.TabIndex = 3;
             // 
             // panel_CenterTop
@@ -310,7 +306,7 @@
             this.panel_CenterTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_CenterTop.Location = new System.Drawing.Point(0, 0);
             this.panel_CenterTop.Name = "panel_CenterTop";
-            this.panel_CenterTop.Size = new System.Drawing.Size(576, 33);
+            this.panel_CenterTop.Size = new System.Drawing.Size(613, 33);
             this.panel_CenterTop.TabIndex = 0;
             this.panel_CenterTop.DoubleClick += new System.EventHandler(this.Panel_CenterTop_DoubleClick);
             // 
@@ -320,7 +316,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(474, 0);
+            this.button1.Location = new System.Drawing.Point(511, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 33);
             this.button1.TabIndex = 1;
@@ -456,11 +452,11 @@
             // 
             this.label_FileInfo_TitleMD5.AutoSize = true;
             this.label_FileInfo_TitleMD5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.label_FileInfo_TitleMD5.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileInfo_TitleMD5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FileInfo_TitleMD5.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label_FileInfo_TitleMD5.Location = new System.Drawing.Point(6, 67);
             this.label_FileInfo_TitleMD5.Name = "label_FileInfo_TitleMD5";
-            this.label_FileInfo_TitleMD5.Size = new System.Drawing.Size(35, 16);
+            this.label_FileInfo_TitleMD5.Size = new System.Drawing.Size(42, 16);
             this.label_FileInfo_TitleMD5.TabIndex = 3;
             this.label_FileInfo_TitleMD5.Text = "MD5:";
             this.label_FileInfo_TitleMD5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -469,11 +465,11 @@
             // 
             this.label_FileInfo_TitlePath.AutoSize = true;
             this.label_FileInfo_TitlePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.label_FileInfo_TitlePath.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileInfo_TitlePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FileInfo_TitlePath.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label_FileInfo_TitlePath.Location = new System.Drawing.Point(6, 43);
             this.label_FileInfo_TitlePath.Name = "label_FileInfo_TitlePath";
-            this.label_FileInfo_TitlePath.Size = new System.Drawing.Size(36, 16);
+            this.label_FileInfo_TitlePath.Size = new System.Drawing.Size(42, 16);
             this.label_FileInfo_TitlePath.TabIndex = 2;
             this.label_FileInfo_TitlePath.Text = "Path:";
             this.label_FileInfo_TitlePath.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -481,11 +477,11 @@
             // label_FileInfo_TitleName
             // 
             this.label_FileInfo_TitleName.AutoSize = true;
-            this.label_FileInfo_TitleName.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_FileInfo_TitleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_FileInfo_TitleName.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label_FileInfo_TitleName.Location = new System.Drawing.Point(6, 18);
             this.label_FileInfo_TitleName.Name = "label_FileInfo_TitleName";
-            this.label_FileInfo_TitleName.Size = new System.Drawing.Size(41, 16);
+            this.label_FileInfo_TitleName.Size = new System.Drawing.Size(52, 16);
             this.label_FileInfo_TitleName.TabIndex = 1;
             this.label_FileInfo_TitleName.Text = "Name:";
             this.label_FileInfo_TitleName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -614,6 +610,8 @@
             // 
             this.panel_MenuLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.panel_MenuLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel_MenuLeft.Controls.Add(this.changePW_TXTBOX);
+            this.panel_MenuLeft.Controls.Add(this.changePW_BTN);
             this.panel_MenuLeft.Controls.Add(this.groupBox2);
             this.panel_MenuLeft.Controls.Add(this.groupBox1);
             this.panel_MenuLeft.Controls.Add(this.panel_LeftBottom);
@@ -621,10 +619,43 @@
             this.panel_MenuLeft.Controls.Add(this.panel_MenuLeft_File);
             this.panel_MenuLeft.Controls.Add(this.panel_LeftTopAppName);
             this.panel_MenuLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_MenuLeft.Location = new System.Drawing.Point(47, 0);
+            this.panel_MenuLeft.Location = new System.Drawing.Point(10, 0);
             this.panel_MenuLeft.Name = "panel_MenuLeft";
             this.panel_MenuLeft.Size = new System.Drawing.Size(130, 500);
             this.panel_MenuLeft.TabIndex = 0;
+            // 
+            // changePW_TXTBOX
+            // 
+            this.changePW_TXTBOX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
+            this.changePW_TXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.changePW_TXTBOX.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.changePW_TXTBOX.Enabled = false;
+            this.changePW_TXTBOX.Font = new System.Drawing.Font("Consolas", 9.75F);
+            this.changePW_TXTBOX.ForeColor = System.Drawing.SystemColors.Window;
+            this.changePW_TXTBOX.Location = new System.Drawing.Point(0, 431);
+            this.changePW_TXTBOX.Name = "changePW_TXTBOX";
+            this.changePW_TXTBOX.Size = new System.Drawing.Size(130, 23);
+            this.changePW_TXTBOX.TabIndex = 8;
+            // 
+            // changePW_BTN
+            // 
+            this.changePW_BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.changePW_BTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.changePW_BTN.Enabled = false;
+            this.changePW_BTN.FlatAppearance.BorderSize = 0;
+            this.changePW_BTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.changePW_BTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.changePW_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changePW_BTN.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.changePW_BTN.ForeColor = System.Drawing.Color.Silver;
+            this.changePW_BTN.Location = new System.Drawing.Point(0, 454);
+            this.changePW_BTN.Name = "changePW_BTN";
+            this.changePW_BTN.Size = new System.Drawing.Size(130, 26);
+            this.changePW_BTN.TabIndex = 7;
+            this.changePW_BTN.Text = "Change PW";
+            this.changePW_BTN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.changePW_BTN.UseVisualStyleBackColor = true;
+            this.changePW_BTN.Click += new System.EventHandler(this.changePW_BTN_Click);
             // 
             // groupBox2
             // 
@@ -742,7 +773,9 @@
             "2015 Config.pk",
             "2015 E.pk",
             "2018/2019 Config.pk",
-            "2018/2019 E.pk"});
+            "2018/2019 Script.pk",
+            "2025 Config.pk",
+            "2025 Script.pk"});
             this.Setting_CryptTable_comboBox.Location = new System.Drawing.Point(3, 19);
             this.Setting_CryptTable_comboBox.Name = "Setting_CryptTable_comboBox";
             this.Setting_CryptTable_comboBox.Size = new System.Drawing.Size(124, 22);
@@ -803,6 +836,7 @@
             this.button_MenuLeftSaveFileAs.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button_MenuLeftSaveFileAs.UseVisualStyleBackColor = false;
             this.button_MenuLeftSaveFileAs.Visible = false;
+            this.button_MenuLeftSaveFileAs.Click += new System.EventHandler(this.button_MenuLeftSaveFileAs_Click);
             // 
             // button_MenuLeftSaveFile
             // 
@@ -896,63 +930,25 @@
             this.button_LeftTopAppName.MouseLeave += new System.EventHandler(this.Button_LeftTopAppName_MouseLeave);
             this.button_LeftTopAppName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Button_LeftTopAppName_MouseUp);
             // 
-            // panel1
+            // panel2
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.panel1.Controls.Add(this.panel_MenuLeft_Small);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(47, 500);
-            this.panel1.TabIndex = 5;
+            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel2.Controls.Add(this.panel_LeftBottomOuterEdge);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 480);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 20);
+            this.panel2.TabIndex = 5;
             // 
-            // panel_MenuLeft_Small
+            // panel_LeftBottomOuterEdge
             // 
-            this.panel_MenuLeft_Small.Controls.Add(this.panel_LeftMenuSmall);
-            this.panel_MenuLeft_Small.Controls.Add(this.panel_LeftOuterEdge);
-            this.panel_MenuLeft_Small.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_MenuLeft_Small.Location = new System.Drawing.Point(0, 33);
-            this.panel_MenuLeft_Small.Name = "panel_MenuLeft_Small";
-            this.panel_MenuLeft_Small.Size = new System.Drawing.Size(47, 447);
-            this.panel_MenuLeft_Small.TabIndex = 7;
-            // 
-            // panel_LeftMenuSmall
-            // 
-            this.panel_LeftMenuSmall.Controls.Add(this.button_LeftMenuSmall_Settings);
-            this.panel_LeftMenuSmall.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_LeftMenuSmall.Location = new System.Drawing.Point(10, 0);
-            this.panel_LeftMenuSmall.Name = "panel_LeftMenuSmall";
-            this.panel_LeftMenuSmall.Size = new System.Drawing.Size(37, 447);
-            this.panel_LeftMenuSmall.TabIndex = 1;
-            // 
-            // button_LeftMenuSmall_Settings
-            // 
-            this.button_LeftMenuSmall_Settings.BackgroundImage = global::KxEditor.Properties.Resources.KxLogo_Black_128px;
-            this.button_LeftMenuSmall_Settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button_LeftMenuSmall_Settings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_LeftMenuSmall_Settings.FlatAppearance.BorderSize = 0;
-            this.button_LeftMenuSmall_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.button_LeftMenuSmall_Settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.button_LeftMenuSmall_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_LeftMenuSmall_Settings.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.button_LeftMenuSmall_Settings.ForeColor = System.Drawing.Color.White;
-            this.button_LeftMenuSmall_Settings.Location = new System.Drawing.Point(0, 0);
-            this.button_LeftMenuSmall_Settings.Name = "button_LeftMenuSmall_Settings";
-            this.button_LeftMenuSmall_Settings.Size = new System.Drawing.Size(37, 30);
-            this.button_LeftMenuSmall_Settings.TabIndex = 2;
-            this.button_LeftMenuSmall_Settings.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button_LeftMenuSmall_Settings.UseVisualStyleBackColor = true;
-            // 
-            // panel_LeftOuterEdge
-            // 
-            this.panel_LeftOuterEdge.BackColor = System.Drawing.Color.Silver;
-            this.panel_LeftOuterEdge.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_LeftOuterEdge.Location = new System.Drawing.Point(0, 0);
-            this.panel_LeftOuterEdge.Name = "panel_LeftOuterEdge";
-            this.panel_LeftOuterEdge.Size = new System.Drawing.Size(10, 447);
-            this.panel_LeftOuterEdge.TabIndex = 0;
+            this.panel_LeftBottomOuterEdge.BackColor = System.Drawing.Color.Silver;
+            this.panel_LeftBottomOuterEdge.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel_LeftBottomOuterEdge.Location = new System.Drawing.Point(0, 0);
+            this.panel_LeftBottomOuterEdge.Name = "panel_LeftBottomOuterEdge";
+            this.panel_LeftBottomOuterEdge.Size = new System.Drawing.Size(10, 20);
+            this.panel_LeftBottomOuterEdge.TabIndex = 1;
             // 
             // panel3
             // 
@@ -961,7 +957,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(47, 33);
+            this.panel3.Size = new System.Drawing.Size(10, 33);
             this.panel3.TabIndex = 6;
             // 
             // button_TopLeftLogo
@@ -977,31 +973,22 @@
             this.button_TopLeftLogo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_TopLeftLogo.Location = new System.Drawing.Point(0, 0);
             this.button_TopLeftLogo.Name = "button_TopLeftLogo";
-            this.button_TopLeftLogo.Size = new System.Drawing.Size(47, 33);
+            this.button_TopLeftLogo.Size = new System.Drawing.Size(10, 33);
             this.button_TopLeftLogo.TabIndex = 0;
             this.button_TopLeftLogo.Text = "Open";
             this.button_TopLeftLogo.UseVisualStyleBackColor = false;
             this.button_TopLeftLogo.Click += new System.EventHandler(this.Button_TopLeftLogo_Click);
             // 
-            // panel2
+            // panel1
             // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel2.Controls.Add(this.panel_LeftBottomOuterEdge);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 480);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(47, 20);
-            this.panel2.TabIndex = 5;
-            // 
-            // panel_LeftBottomOuterEdge
-            // 
-            this.panel_LeftBottomOuterEdge.BackColor = System.Drawing.Color.Silver;
-            this.panel_LeftBottomOuterEdge.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_LeftBottomOuterEdge.Location = new System.Drawing.Point(0, 0);
-            this.panel_LeftBottomOuterEdge.Name = "panel_LeftBottomOuterEdge";
-            this.panel_LeftBottomOuterEdge.Size = new System.Drawing.Size(10, 20);
-            this.panel_LeftBottomOuterEdge.TabIndex = 1;
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 500);
+            this.panel1.TabIndex = 5;
             // 
             // MainForm
             // 
@@ -1044,11 +1031,9 @@
             this.Settings_groupBox.ResumeLayout(false);
             this.panel_MenuLeft_File.ResumeLayout(false);
             this.panel_LeftTopAppName.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel_MenuLeft_Small.ResumeLayout(false);
-            this.panel_LeftMenuSmall.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1094,15 +1079,6 @@
         public FastColoredTextBoxNS.FastColoredTextBox Center_LoggingTextBox;
         private System.Windows.Forms.Panel panel_CenterLoggingTextBox;
         private System.Windows.Forms.Panel panel_CenterEditorTextBox;
-        private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.Panel panel3;
-        public System.Windows.Forms.Button button_TopLeftLogo;
-        public System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel_MenuLeft_Small;
-        private System.Windows.Forms.Panel panel_LeftOuterEdge;
-        private System.Windows.Forms.Panel panel_LeftBottomOuterEdge;
-        private System.Windows.Forms.Panel panel_LeftMenuSmall;
-        public System.Windows.Forms.Button button_LeftMenuSmall_Settings;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         public FastColoredTextBoxNS.FastColoredTextBox Center_EditorTextBox;
@@ -1112,6 +1088,13 @@
         public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.ComboBox EditorBG_comboBox;
         private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox changePW_TXTBOX;
+        public System.Windows.Forms.Button changePW_BTN;
+        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Button button_TopLeftLogo;
+        public System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel_LeftBottomOuterEdge;
     }
 }
 

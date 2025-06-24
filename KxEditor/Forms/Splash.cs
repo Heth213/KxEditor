@@ -18,7 +18,7 @@ namespace KxEditor.Forms
             };
 
             System.Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            label_Version.Text = string.Format("Version: {0}.{1:00}", version.Major, version.Minor);
+            label_Version.Text = "Version: 2025";
 
             pb_timer = new System.Windows.Forms.Timer
             {
@@ -52,6 +52,11 @@ namespace KxEditor.Forms
         private void Splash_FormClosing(object sender, FormClosingEventArgs e)
         {
             pb_timer.Stop();
+        }
+
+        private void label_Version_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

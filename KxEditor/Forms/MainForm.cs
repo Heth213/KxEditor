@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using KxExtension;
 using FastColoredTextBoxNS;
 using System.Text.RegularExpressions;
+using System.Globalization;
+using System.Text;
 
 namespace KxEditor
 {
@@ -31,7 +33,7 @@ namespace KxEditor
         public MenuItem treeview_RightClickMenueItem_Add;
         public MenuItem treeview_RightClickMenueItem_Delete;
         public int treeview_RightClickMenu_ClickedNodeIndex = -1;
-
+        //public ComboBox CryptTableComboBox => MainForm.Instance.Setting_CryptTable_comboBox;
         public static Rectangle ScreenResolution => Screen.PrimaryScreen.Bounds;
         private int ResizeHandelSize => 16;
         private Rectangle SizeGripRectangle;
@@ -110,13 +112,17 @@ namespace KxEditor
             Thread.Sleep(2000);
 
             InitializeComponent();
+            // Force a valid culture and encoding
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
             Instance = this;
             Application.AddMessageFilter(Instance);
             ControlsToMove = new HashSet<Control> {
                 Instance.panel_CenterTop,
                 Instance.panel_RightTopExit,
             };
-
+            
             Instance.FormBorderStyle = FormBorderStyle.None;
             Instance.DoubleBuffered = true;
             Instance.SetStyle(ControlStyles.ResizeRedraw, true);
@@ -423,11 +429,23 @@ namespace KxEditor
                 KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.CFG + (int)KxSharpLib.Security.Kal.Crypto.EKeys.CFGADD;
                 logger.Write(string.Format("Using CryptTable from 2018/2019 and Config.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
             }
-            else if (selectedItem.Contains("2018/2019 E.pk"))
+            else if (selectedItem.Contains("2018/2019 Script.pk"))
             {
                 KxSharpLib.Security.Kal.Crypto.GUseCrypt = KxSharpLib.Security.Kal.Crypto.EUseCrypt.c2018;
                 KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.E;
-                logger.Write(string.Format("Using CryptTable from 2018/2019 and E.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
+                logger.Write(string.Format("Using CryptTable from 2018/2019 and Script.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
+            }
+            else if (selectedItem.Contains("2025 Config.pk"))
+            {
+                KxSharpLib.Security.Kal.Crypto.GUseCrypt = KxSharpLib.Security.Kal.Crypto.EUseCrypt.c2025;
+                KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.CFG25;
+                logger.Write(string.Format("Using CryptTable from 2025 Config.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
+            }
+            else if (selectedItem.Contains("2025 Script.pk"))
+            {
+                KxSharpLib.Security.Kal.Crypto.GUseCrypt = KxSharpLib.Security.Kal.Crypto.EUseCrypt.c2025;
+                KxSharpLib.Security.Kal.Crypto.GKey = (int)KxSharpLib.Security.Kal.Crypto.EKeys.E25;
+                logger.Write(string.Format("Using CryptTable from 2025 Script.pk key({0})", KxSharpLib.Security.Kal.Crypto.GKey));
             }
             else
             {
@@ -617,7 +635,7 @@ namespace KxEditor
 
         private void Button_MenuLeftFileOpen_Click(object sender, EventArgs e)
         {
-
+            Setting_CryptTable_comboBox.Enabled = true;
             if (Setting_CryptTable_comboBox.SelectedIndex == -1 || KxSharpLib.Security.Kal.Crypto.GUseCrypt == KxSharpLib.Security.Kal.Crypto.EUseCrypt.Unknown)
             {
                 logger.Write("[Unknown CryptTable, Please set a valid table!]");
@@ -893,6 +911,42 @@ namespace KxEditor
 
             
 
+        }
+
+        private void button_MenuLeftSaveFileAs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void changePW_BTN_Click(object sender, EventArgs e)
+        {
+            if (changePW_TXTBOX.Text == null || changePW_TXTBOX.Text.Trim() == "")
+            {
+                logger.Write("Please enter a new password.");
+                return;
+            }
+            if (LoadedPK == null || LoadedPK.Password == null || LoadedPK.Password == "")
+            {
+                logger.Write("No PK loaded or no password set, please load a PK file and set a password first.");
+                return;
+            }
+
+            // Confirmation message box
+            DialogResult result = KxMsgBox.Show(
+                "Change Password?",
+                "Are you sure you want to change the PK password?",
+                KxMsgBoxIcon.QUESTION,
+                KxMsgBoxButton.YESNO);
+
+            if (result == DialogResult.Yes)
+            {
+                LoadedPK.Password = changePW_TXTBOX.Text.Trim();
+                logger.Write("PK Password has been changed, you can save the PK now.");
+            }
+            else
+            {
+                logger.Write("Password change canceled.");
+            }
         }
     }
 }
