@@ -17,6 +17,7 @@ namespace KxSharpLib.Security.Kal
             c2006,
             c2015,
             c2018,
+            c2025,
         };
         public enum ECryptTableType
         {
@@ -27,6 +28,8 @@ namespace KxSharpLib.Security.Kal
             d2015,
             e2018,
             d2018,
+            e2025,
+            d2025,
         };
 
         [Flags]
@@ -34,9 +37,11 @@ namespace KxSharpLib.Security.Kal
         {
             Unknown,
             CFG = 47,
+            CFG25 = 1,
+            E25 = 70,
             E = 4,
             CFGADD = 11,
-            MAX = 63,
+            MAX = 71,
         };
         public static int GKey
         {
@@ -65,6 +70,10 @@ namespace KxSharpLib.Security.Kal
                     return EncryptTables.e2018;
                 case ECryptTableType.d2018:
                     return DecryptTables.d2018;
+                case ECryptTableType.e2025:
+                    return EncryptTables.e2025;
+                case ECryptTableType.d2025:
+                    return DecryptTables.d2025;
             }
             return null;
         }
@@ -89,6 +98,8 @@ namespace KxSharpLib.Security.Kal
                     return Crypt(GetTable(ECryptTableType.e2015), key, input);
                 case EUseCrypt.c2018:
                     return Crypt(GetTable(ECryptTableType.e2018), key, input);
+                case EUseCrypt.c2025:
+                    return Crypt(GetTable(ECryptTableType.e2025), key, input);
                 default:
                     return Crypt(GetTable(ECryptTableType.e2006), key, input);
             }
@@ -108,6 +119,8 @@ namespace KxSharpLib.Security.Kal
                     return Crypt(GetTable(ECryptTableType.d2015), key, input);
                 case EUseCrypt.c2018:
                     return Crypt(GetTable(ECryptTableType.d2018), key, input);
+                case EUseCrypt.c2025:
+                    return Crypt(GetTable(ECryptTableType.d2025), key, input);
                 default:
                     return Crypt(GetTable(ECryptTableType.d2006), key, input);
             }
@@ -151,7 +164,7 @@ namespace KxSharpLib.Security.Kal
             if (table == null)
                 throw new ArgumentNullException(nameof(table));
 
-            key &= (int)EKeys.MAX;
+            key %= (int)EKeys.MAX;
             return table[((key <<= 8) + input)];
         }
     }

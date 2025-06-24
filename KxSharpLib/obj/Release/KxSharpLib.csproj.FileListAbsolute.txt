@@ -1,0 +1,10 @@
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\bin\Release\KxSharpLib.dll
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\bin\Release\KxSharpLib.pdb
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\bin\Release\FastColoredTextBox.dll
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\bin\Release\ICSharpCode.SharpZipLib.dll
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\bin\Release\FastColoredTextBox.xml
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\obj\Release\KxSharpLib.csproj.AssemblyReference.cache
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\obj\Release\KxSharpLib.csproj.CoreCompileInputs.cache
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\obj\Release\KxSharpLib.csproj.Up2Date
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\obj\Release\KxSharpLib.dll
+G:\Kal\Other Sources\KxEditor-maste heth\KxEditor-master\KxSharpLib\obj\Release\KxSharpLib.pdb
