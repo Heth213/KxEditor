@@ -21,6 +21,9 @@ namespace KxEditor
             Config_2018 = 58,
             E_2018 = 4,
 
+            Config_2025 = 1,
+            E_2025 = 70,
+
             MAX = 63,
         }
         public static string File_Name => "Configuration.json";

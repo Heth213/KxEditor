@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace KxEditor
         public PackageHandler(string filePath) {
             MainForm.Instance.LoadedPK.Name = Path.GetFileName(filePath);
             MainForm.Instance.LoadedPK.Path = filePath;
-
+            
             using (ZipInputStream zipStream = new ZipInputStream(File.OpenRead(MainForm.Instance.LoadedPK.Path)))
             {
                 using (PasswordPromt Pw_Promt = new PasswordPromt())
@@ -30,15 +31,22 @@ namespace KxEditor
                             node = MainForm.Instance.treeView_PKiew.Nodes.Add(Path.GetFileName(MainForm.Instance.LoadedPK.Path));
                             entries = GetEntries(zipStream);
                         }
-                        catch (Exception)
+                        catch (Exception R)
                         {
+                            
                             MainLogger.Write("Wrong password! Please reopen the file with the correct password");
+                            MainLogger.Write(R.Message);
                             zipStream.Close();
                             MainForm.Instance.treeView_PKiew.Nodes.Clear();
+                            
                             return;
                         }
                         zipStream.Close();
 
+                        MainForm.Instance.changePW_TXTBOX.Text = MainForm.Instance.LoadedPK.Password;
+                        MainForm.Instance.changePW_TXTBOX.Enabled = true;
+                        MainForm.Instance.changePW_BTN.Enabled = true;
+                        MainForm.Instance.Setting_CryptTable_comboBox.Enabled = true;
                         MainForm.Instance.DATList = new List<KxSharpLib.Kal.DAT>();
 
                         using (BackgroundWorker bw = new BackgroundWorker())
